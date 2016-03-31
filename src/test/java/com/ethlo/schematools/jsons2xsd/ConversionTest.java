@@ -15,7 +15,7 @@ import com.ethlo.schematools.jsons2xsd.XmlUtil;
 import com.ethlo.schematools.jsons2xsd.Jsons2Xsd.OuterWrapping;
 
 /**
- * 
+ *
  * @author mha
  *
  */
@@ -25,9 +25,9 @@ public class ConversionTest
 	@Test
 	public void testConversionSmall() throws IOException, TransformerException
 	{
-		try (final Reader r = new InputStreamReader(getClass().getResourceAsStream("/schema/small.jsons")))
+		try (final Reader r = new InputStreamReader(getClass().getResourceAsStream("/schema/awbpouch.jsons")))
 		{
-			final Document doc = Jsons2Xsd.convert(r, "http://ethlo.com/schema/residency-1.0.xsd", OuterWrapping.ELEMENT, "mySpecialElement");
+			final Document doc = Jsons2Xsd.convert(r, "http://winwebconnect.com/schemas/v1/awbpouch-1.0.xsd", OuterWrapping.ELEMENT, "mySpecialElement");
 			System.out.println(XmlUtil.asXmlString(doc.getDocumentElement()));
 		}
 	}
@@ -55,7 +55,7 @@ public class ConversionTest
 	{
 		try (final Reader r = new InputStreamReader(getClass().getResourceAsStream("/schema/account.json")))
 		{
-			final Document doc = Jsons2Xsd.convert(r, "http://cableapi.cablelabs.com/schemas/v1/Account", OuterWrapping.ELEMENT, "Account");
+			final Document doc = Jsons2Xsd.convert(r, "http://winwebconnect.com/schemas/v1/awbpouch-1.0.xsd", OuterWrapping.TYPE, "AWBPouch");
 			System.out.println(XmlUtil.asXmlString(doc.getDocumentElement()));
 		}
 	}

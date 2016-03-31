@@ -1,0 +1,1000 @@
+[INFO] Scanning for projects...
+[INFO]                                                                         
+[INFO] ------------------------------------------------------------------------
+[INFO] Building jsons2xsd 0.2-SNAPSHOT
+[INFO] ------------------------------------------------------------------------
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ jsons2xsd ---
+[WARNING] Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+[INFO] skip non existing resourceDirectory /Users/joedev/coder/projects/toolbox/jsons2xsd/src/main/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:2.5.1:compile (default-compile) @ jsons2xsd ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:testResources (default-testResources) @ jsons2xsd ---
+[WARNING] Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+[INFO] Copying 7 resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:2.5.1:testCompile (default-testCompile) @ jsons2xsd ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] --- maven-surefire-plugin:2.12.4:test (default-test) @ jsons2xsd ---
+[INFO] Surefire report directory: /Users/joedev/coder/projects/toolbox/jsons2xsd/target/surefire-reports
+
+-------------------------------------------------------
+ T E S T S
+-------------------------------------------------------
+Running com.ethlo.schematools.jsons2xsd.ConversionTest
+{"type":"object","properties":{"AwbStatus":{"type":"string","enum":["D","S","A","R","Z"],"description":"Draft, Sent, Accepted, Rejected, Shipment Accepted"},"AwbNumber":{"type":"string"},"eAwb":{"type":"boolean"},"WithPaper":{"type":"boolean"},"Parties":{"type":"object","properties":{"Shipper":{"type":"object","$ref":"#/definitions/Party"},"Consignee":{"type":"object","ref":"#/definitions/Party"},"Notify":{"type":"object","ref":"#/definitions/Party"},"Agent":{"type":"object","properties":{"WinID":{"type":"integer"},"AccountNumber":{"type":"string"}}},"CoLoader":{"type":"string"}}},"Accounting":{"type":"array","items":{"type":"object","properties":{"Identifier":{"type":"string","enum":["CRN","CRD","CRI","GEN","GBL","MCO","STL","RET","SRN"],"description":"CRN Credit Card Number, CRD: Credit Card Expiry Date, CRI: Credit Card Issuance Name (Name Shown on the Credit Card), GEN: General Information, GBL: Government Bill of Lading, MCO: Miscellaneous Charge Order, STL: Mode of Settlement, RET: Return to Origin, SRN: Shipper’s Reference Number"},"Information":{"type":"string","maxLength":34}}}},"ShipmentReference":{"type":"object","properties":{"ReferenceNumber":{"type":"string"},"AdditionalInformation":{"type":"string"}}},"RoutingDetails":{"type":"array","items":{"type":"object","properties":{"FromAirportCode":{"type":"string"},"ToAirportCode":{"type":"string"},"CarrierCode":{"type":"string"},"FlightNumber":{"type":"string"},"FlightDate":{"type":"string"}}}},"ChargesDeclaration":{"type":"object","allOf":[{"$ref":"#/definitions/Charges"},{"required":["CurrencyCode","ChargeCode","WeightOrValuation","Other"]}],"properties":{"CurrencyCode":{"type":"string"},"WeightOrValuation":{"type":"string"},"Other":{"type":"string"},"ValuesForCarriage":{"type":"string"},"ValuesForCustom":{"type":"string"},"ValuesForInsurance":{"type":"string"},"ChargeCode":{"type":"string","enum":["CC","CZ","CG","PP","PX","PZ","PG","CP","CX","CM","NC","NT","NZ","NG","NP","NX","CA","CB","CE","CH","PC","PD","PE","PH","PF"],"description":"CC:  All Charges Collect, CZ:  All Charges Collect by Credit Card, CG:  All Charges Collect by GBL, PP:  All Charges Prepaid Cash, PX:  All Charges Prepaid Credit, PZ:  All Charges Prepaid by Credit Card, PG:  All Charges Prepaid by GBL, CP:  Destination Collect Cash, CX:  Destination Collect Credit, CM:  Destination Collect by MCO, NC:  No Charge, NT:  No Weight Charge — Other Charges Collect, NZ:  No Weight Charge — Other Charges Prepaid by Credit Card, NG:  No Weight Charge — Other Charges Prepaid by GBL, NP:  No Weight Charge — Other Charges Prepaid Cash, NX:  No Weight Charge — Other Charges Prepaid Credit, CA:  Partial Collect Credit — Partial Prepaid Cash, CB:  Partial Collect Credit — Partial Prepaid Credit, CE:  Partial Collect Credit Card — Partial Prepaid Cash, CH:  Partial Collect Credit Card — Partial Prepaid Credit, PC:  Partial Prepaid Cash — Partial Collect Cash, PD:  Partial Prepaid Credit — Partial Collect Cash, PE:  Partial Prepaid Credit Card — Partial Collect Cash, PH:  Partial Prepaid Credit Card — Partial Collect Credit, PF:  Partial Prepaid Credit Card — Partial Collect Credit Card"}},"additionalProperties":false},"Handling":{"type":"object","properties":{"SpecialServiceInformation":{"type":"string"},"OtherServiceInformation":{"type":"string"},"SCI":{"type":"string"},"SpecialHandling":{"type":"array","items":{"type":"object","$ref":"#/definitions/SpecialHandlingItems"}},"PrintHandlingDetails":{"type":"string"}}},"Rates":{"type":"array","items":{"type":"object","properties":{"NumberOfPieces":{"type":"integer"},"GrossWeight":{"$ref":"#/definitions/GrossWeight"},"Volume":{"$ref":"#/definitions/Volume"},"SLAC":{"type":"string"},"RateClassCode":{"type":"string","$ref":"#/definitions/RateClassCodes"},"CommodityItemNumber":{"type":"string"},"ChargeableWeight":{"type":"integer"},"RateOrCharge":{"type":"number"},"ChargeAmount":{"type":"number"},"NatureAndQuantityOfGoods":{"type":"string"},"PrintNatureAndQuantityOfGoods":{"type":"string"},"Dimensions":{"type":"string"},"Dims":{"type":"array","items":{"type":"object","properties":{"Pcs":{"type":"integer"},"Length":{"type":"integer"},"Width":{"type":"integer"},"Height":{"type":"integer"},"UOM":{"type":"string"}}}},"ULD":{"type":"array","items":{"type":"object"}}}}},"ChargesSummary":{"type":"object","properties":{"WeightCharge":{"type":"number"},"ValuationCharge":{"type":"string"},"Taxes":{"type":"string"}}},"OtherCharges":{"type":"array","items":{"type":"object","properties":{"Description":{"type":"string","maxLength":2,"minLength":2,"enum":["UC","UL","BA","FA","BB","DG","AW","DH","AW","BC","AW","AW","DI","AW","AC","AS","AT","BR","BL","CA","DC","FC","LC","LI","CD","CH","JA","BE","CB","PB","ZC","BF","RA","SA","SB","SF","UD","GA","UB","DB","DF","FB","CG","CE","MY","FE","ZB","TX","GT","EA","KA","PA","UH","VA","WA","LE","HR","BI","CF","IN","UE","FF","KB","LA","CC","BH","MA","MC","MO","MX","MZ","MD","MN","MB","HB","NS","CI","PK","PU","TA","DD","FD","DJ","SE","LF","RD","UF","RC","RB","DK","RF","CJ","LJ","ZA","TB","VB","SC","XB","SP","SS","TC","ST","TD","TE","SI","SR","LH","SO","VC","SD","SU","XC","TR","UG","TV","TI","IA","VI","DV","LG","XD","FI","XE","BM"],"description":"UC: Adjusting of improperly loaded ULD, BA: Advances and/or guarantees, FA: Airport arrival, BB: Appraisal Service, DG: AWB Cancellation, DH: AWB Charges Correction Advice, BC: AWB Copy, AW: Air Waybill Fee, DI: AWB Re-waybilling, AC: Animal Container, AS: Assembly Service Fee, AT: Attendant, BR: Bank Release, BL: Blacklist Certificate, CA: Bonding, DC: Certificate of Origin, FC: Charges Collect Fee, LC: Cleaning, LI: Cleaning of stalls/pens, CD: Clearance and Handling — Destination, CH: Clearance and Handling — Origin, JA: Clearance, General, BE: Collection of funds, CB: Completion/preparation of documents, PB: Cool/Cold room, freezer (Perishables), ZC: Cool/Cold room, freezer (Storage), BF: Copies of documents, RA: Dangerous Goods Fee, SA: Delivery, SB: Delivery notification, SF: Delivery Order, UD: Demurrage, GA: Diplomatic consignment, UB: Disassembly, DB: Disbursement Fee, DF: Distribution Service Fee, FB: Domestic shipments, CG: Electronic processing or transmission customs purposes, CE: Export/Import warrant, MY: Fuel Surcharge — Due Issuing Carrier, FE: General (Handling), ZB: General (Storage), TX: General Taxes, GT: Government Tax, EA: Handling (Express), KA: Handling (Heavy/Bulky cargo), PA: Handling (Perishables), UH: Handling (Unit Load Device), VA: Handling (Valuable Cargo), WA: Handling (Vulnerable cargo), LE: Hotel, HR: Human Remains, BI: Import/export documents processing, CF: Inventory and/or inspection, IN: Insurance Premium, UE: Leasing, FF: Loading/unloading, KB: Loading/unloading equipment (forklift, LA: Live Animals, CC: Manual data entry for customs purposes, BH: Messenger service, MA: Miscellaneous — Due Agent (see Note, MC: Miscellaneous — Due Carrier (see Note, MO: to MX Miscellaneous — Due Issuing Carrier, MZ: Miscellaneous — Due Issuing Carrier, MD: to MN Miscellaneous — Due Last Carrier, MB: Miscellaneous — Unassigned (see Note, HB: Mortuary, NS: Navigation Surcharge — Due Issuing Carrier, CI: Overtime and Other Customs Imposed Charges, PK: Packing/Repacking, PU: Pick-Up, TA: Postal Tax, DD: Preparation of Cargo manifest, FD: Priority, DJ: Proof of delivery (documentation), SE: Proof of delivery (pickup and delivery), LF: Quarantine, RD: Radio-active room, UF: Recontouring, RC: Referral of Charge, RB: Rejection, DK: Release order, RF: Remit Following Collection Fee, CJ: Removal (carrier warehouse to warehouse), LJ: Rental of Stalls/pens, ZA: Re-warehousing, TB: Sales Tax, VB: Security (armed guard/escort) handling, SC: Security Charge, XB: Security (Surcharge/premiums), SP: Separate Early Release, SS: Signature Service, TC: Stamp Tax, ST: State Sales Tax, TD: State Tax, TE: Statistical Tax, SI: Stop in Transit, SR: Storage — Destination, LH: Storage (Live animals), SO: Storage — Origin, VC: Strongroom, SD: Surface Charge — Destination, SU: Surface Charge — Origin, XC: Time, TR: Transit, UG: Unloading (Unit Load Device), TV: Value Added Tax (General or for Export), TI: Value Added Tax (For Import only), IA: Very important cargo (VIC), DV: Veterinary and/or Phytosanitary purposes, LG: Veterinary inspection, XD: War risk, FI: Weighing, XE: Weight, BM: Withdrawal of shipment after clearance"},"Amount":{"type":"number","maxLength":12},"ChargeIdentifier":{"type":"string"},"PrepaidCollect":{"type":"string"}}}},"Optional":{"type":"object","properties":{"eCSD":{"type":"object"},"OtherCustoms":{"type":"array","items":{"type":"object"}}}},"EmailNotifications":{"type":"array","items":{"type":"object","properties":{"TheID":{"type":"string"},"Name":{"type":"string"},"Email":{"type":"string","format":"email"}}}},"Execution":{"type":"object","properties":{"Date":{"type":"string"},"Place":{"type":"string"},"ShipperSignature":{"type":"string"},"CarrierSignature":{"type":"string"}}}}}
+In PROP
+{"type":"string"}
+{"type":"boolean"}
+{"type":"boolean"}
+{"type":"object","properties":{"Shipper":{"type":"object","$ref":"#/definitions/Party"},"Consignee":{"type":"object","ref":"#/definitions/Party"},"Notify":{"type":"object","ref":"#/definitions/Party"},"Agent":{"type":"object","properties":{"WinID":{"type":"integer"},"AccountNumber":{"type":"string"}}},"CoLoader":{"type":"string"}}}
+In PROP
+{"type":"object","ref":"#/definitions/Party"}
+{"type":"object","ref":"#/definitions/Party"}
+{"type":"object","properties":{"WinID":{"type":"integer"},"AccountNumber":{"type":"string"}}}
+In PROP
+{"type":"integer"}
+{"type":"string"}
+{"type":"string"}
+{"type":"array","items":{"type":"object","properties":{"Identifier":{"type":"string","enum":["CRN","CRD","CRI","GEN","GBL","MCO","STL","RET","SRN"],"description":"CRN Credit Card Number, CRD: Credit Card Expiry Date, CRI: Credit Card Issuance Name (Name Shown on the Credit Card), GEN: General Information, GBL: Government Bill of Lading, MCO: Miscellaneous Charge Order, STL: Mode of Settlement, RET: Return to Origin, SRN: Shipper’s Reference Number"},"Information":{"type":"string","maxLength":34}}}}
+{"type":"object","properties":{"Identifier":{"type":"string","enum":["CRN","CRD","CRI","GEN","GBL","MCO","STL","RET","SRN"],"description":"CRN Credit Card Number, CRD: Credit Card Expiry Date, CRI: Credit Card Issuance Name (Name Shown on the Credit Card), GEN: General Information, GBL: Government Bill of Lading, MCO: Miscellaneous Charge Order, STL: Mode of Settlement, RET: Return to Origin, SRN: Shipper’s Reference Number"},"Information":{"type":"string","maxLength":34}}}
+In PROP
+{"type":"string","maxLength":34}
+{"type":"object","properties":{"ReferenceNumber":{"type":"string"},"AdditionalInformation":{"type":"string"}}}
+In PROP
+{"type":"string"}
+{"type":"string"}
+{"type":"array","items":{"type":"object","properties":{"FromAirportCode":{"type":"string"},"ToAirportCode":{"type":"string"},"CarrierCode":{"type":"string"},"FlightNumber":{"type":"string"},"FlightDate":{"type":"string"}}}}
+{"type":"object","properties":{"FromAirportCode":{"type":"string"},"ToAirportCode":{"type":"string"},"CarrierCode":{"type":"string"},"FlightNumber":{"type":"string"},"FlightDate":{"type":"string"}}}
+In PROP
+{"type":"string"}
+{"type":"string"}
+{"type":"string"}
+{"type":"string"}
+{"type":"string"}
+{"type":"object","allOf":[{"$ref":"#/definitions/Charges"},{"required":["CurrencyCode","ChargeCode","WeightOrValuation","Other"]}],"properties":{"CurrencyCode":{"type":"string"},"WeightOrValuation":{"type":"string"},"Other":{"type":"string"},"ValuesForCarriage":{"type":"string"},"ValuesForCustom":{"type":"string"},"ValuesForInsurance":{"type":"string"},"ChargeCode":{"type":"string","enum":["CC","CZ","CG","PP","PX","PZ","PG","CP","CX","CM","NC","NT","NZ","NG","NP","NX","CA","CB","CE","CH","PC","PD","PE","PH","PF"],"description":"CC:  All Charges Collect, CZ:  All Charges Collect by Credit Card, CG:  All Charges Collect by GBL, PP:  All Charges Prepaid Cash, PX:  All Charges Prepaid Credit, PZ:  All Charges Prepaid by Credit Card, PG:  All Charges Prepaid by GBL, CP:  Destination Collect Cash, CX:  Destination Collect Credit, CM:  Destination Collect by MCO, NC:  No Charge, NT:  No Weight Charge — Other Charges Collect, NZ:  No Weight Charge — Other Charges Prepaid by Credit Card, NG:  No Weight Charge — Other Charges Prepaid by GBL, NP:  No Weight Charge — Other Charges Prepaid Cash, NX:  No Weight Charge — Other Charges Prepaid Credit, CA:  Partial Collect Credit — Partial Prepaid Cash, CB:  Partial Collect Credit — Partial Prepaid Credit, CE:  Partial Collect Credit Card — Partial Prepaid Cash, CH:  Partial Collect Credit Card — Partial Prepaid Credit, PC:  Partial Prepaid Cash — Partial Collect Cash, PD:  Partial Prepaid Credit — Partial Collect Cash, PE:  Partial Prepaid Credit Card — Partial Collect Cash, PH:  Partial Prepaid Credit Card — Partial Collect Credit, PF:  Partial Prepaid Credit Card — Partial Collect Credit Card"}},"additionalProperties":false}
+In PROP
+{"type":"string"}
+{"type":"string"}
+{"type":"string"}
+{"type":"string"}
+{"type":"string"}
+{"type":"string"}
+{"type":"object","properties":{"SpecialServiceInformation":{"type":"string"},"OtherServiceInformation":{"type":"string"},"SCI":{"type":"string"},"SpecialHandling":{"type":"array","items":{"type":"object","$ref":"#/definitions/SpecialHandlingItems"}},"PrintHandlingDetails":{"type":"string"}}}
+In PROP
+{"type":"string"}
+{"type":"string"}
+{"type":"string"}
+{"type":"array","items":{"type":"object","$ref":"#/definitions/SpecialHandlingItems"}}
+{"type":"string"}
+{"type":"array","items":{"type":"object","properties":{"NumberOfPieces":{"type":"integer"},"GrossWeight":{"$ref":"#/definitions/GrossWeight"},"Volume":{"$ref":"#/definitions/Volume"},"SLAC":{"type":"string"},"RateClassCode":{"type":"string","$ref":"#/definitions/RateClassCodes"},"CommodityItemNumber":{"type":"string"},"ChargeableWeight":{"type":"integer"},"RateOrCharge":{"type":"number"},"ChargeAmount":{"type":"number"},"NatureAndQuantityOfGoods":{"type":"string"},"PrintNatureAndQuantityOfGoods":{"type":"string"},"Dimensions":{"type":"string"},"Dims":{"type":"array","items":{"type":"object","properties":{"Pcs":{"type":"integer"},"Length":{"type":"integer"},"Width":{"type":"integer"},"Height":{"type":"integer"},"UOM":{"type":"string"}}}},"ULD":{"type":"array","items":{"type":"object"}}}}}
+{"type":"object","properties":{"NumberOfPieces":{"type":"integer"},"GrossWeight":{"$ref":"#/definitions/GrossWeight"},"Volume":{"$ref":"#/definitions/Volume"},"SLAC":{"type":"string"},"RateClassCode":{"type":"string","$ref":"#/definitions/RateClassCodes"},"CommodityItemNumber":{"type":"string"},"ChargeableWeight":{"type":"integer"},"RateOrCharge":{"type":"number"},"ChargeAmount":{"type":"number"},"NatureAndQuantityOfGoods":{"type":"string"},"PrintNatureAndQuantityOfGoods":{"type":"string"},"Dimensions":{"type":"string"},"Dims":{"type":"array","items":{"type":"object","properties":{"Pcs":{"type":"integer"},"Length":{"type":"integer"},"Width":{"type":"integer"},"Height":{"type":"integer"},"UOM":{"type":"string"}}}},"ULD":{"type":"array","items":{"type":"object"}}}}
+In PROP
+{"type":"integer"}
+{"type":"string"}
+{"type":"string"}
+{"type":"integer"}
+{"type":"number"}
+{"type":"number"}
+{"type":"string"}
+{"type":"string"}
+{"type":"string"}
+{"type":"array","items":{"type":"object","properties":{"Pcs":{"type":"integer"},"Length":{"type":"integer"},"Width":{"type":"integer"},"Height":{"type":"integer"},"UOM":{"type":"string"}}}}
+{"type":"object","properties":{"Pcs":{"type":"integer"},"Length":{"type":"integer"},"Width":{"type":"integer"},"Height":{"type":"integer"},"UOM":{"type":"string"}}}
+In PROP
+{"type":"integer"}
+{"type":"integer"}
+{"type":"integer"}
+{"type":"integer"}
+{"type":"string"}
+{"type":"array","items":{"type":"object"}}
+{"type":"object"}
+{"type":"object","properties":{"WeightCharge":{"type":"number"},"ValuationCharge":{"type":"string"},"Taxes":{"type":"string"}}}
+In PROP
+{"type":"number"}
+{"type":"string"}
+{"type":"string"}
+{"type":"array","items":{"type":"object","properties":{"Description":{"type":"string","maxLength":2,"minLength":2,"enum":["UC","UL","BA","FA","BB","DG","AW","DH","AW","BC","AW","AW","DI","AW","AC","AS","AT","BR","BL","CA","DC","FC","LC","LI","CD","CH","JA","BE","CB","PB","ZC","BF","RA","SA","SB","SF","UD","GA","UB","DB","DF","FB","CG","CE","MY","FE","ZB","TX","GT","EA","KA","PA","UH","VA","WA","LE","HR","BI","CF","IN","UE","FF","KB","LA","CC","BH","MA","MC","MO","MX","MZ","MD","MN","MB","HB","NS","CI","PK","PU","TA","DD","FD","DJ","SE","LF","RD","UF","RC","RB","DK","RF","CJ","LJ","ZA","TB","VB","SC","XB","SP","SS","TC","ST","TD","TE","SI","SR","LH","SO","VC","SD","SU","XC","TR","UG","TV","TI","IA","VI","DV","LG","XD","FI","XE","BM"],"description":"UC: Adjusting of improperly loaded ULD, BA: Advances and/or guarantees, FA: Airport arrival, BB: Appraisal Service, DG: AWB Cancellation, DH: AWB Charges Correction Advice, BC: AWB Copy, AW: Air Waybill Fee, DI: AWB Re-waybilling, AC: Animal Container, AS: Assembly Service Fee, AT: Attendant, BR: Bank Release, BL: Blacklist Certificate, CA: Bonding, DC: Certificate of Origin, FC: Charges Collect Fee, LC: Cleaning, LI: Cleaning of stalls/pens, CD: Clearance and Handling — Destination, CH: Clearance and Handling — Origin, JA: Clearance, General, BE: Collection of funds, CB: Completion/preparation of documents, PB: Cool/Cold room, freezer (Perishables), ZC: Cool/Cold room, freezer (Storage), BF: Copies of documents, RA: Dangerous Goods Fee, SA: Delivery, SB: Delivery notification, SF: Delivery Order, UD: Demurrage, GA: Diplomatic consignment, UB: Disassembly, DB: Disbursement Fee, DF: Distribution Service Fee, FB: Domestic shipments, CG: Electronic processing or transmission customs purposes, CE: Export/Import warrant, MY: Fuel Surcharge — Due Issuing Carrier, FE: General (Handling), ZB: General (Storage), TX: General Taxes, GT: Government Tax, EA: Handling (Express), KA: Handling (Heavy/Bulky cargo), PA: Handling (Perishables), UH: Handling (Unit Load Device), VA: Handling (Valuable Cargo), WA: Handling (Vulnerable cargo), LE: Hotel, HR: Human Remains, BI: Import/export documents processing, CF: Inventory and/or inspection, IN: Insurance Premium, UE: Leasing, FF: Loading/unloading, KB: Loading/unloading equipment (forklift, LA: Live Animals, CC: Manual data entry for customs purposes, BH: Messenger service, MA: Miscellaneous — Due Agent (see Note, MC: Miscellaneous — Due Carrier (see Note, MO: to MX Miscellaneous — Due Issuing Carrier, MZ: Miscellaneous — Due Issuing Carrier, MD: to MN Miscellaneous — Due Last Carrier, MB: Miscellaneous — Unassigned (see Note, HB: Mortuary, NS: Navigation Surcharge — Due Issuing Carrier, CI: Overtime and Other Customs Imposed Charges, PK: Packing/Repacking, PU: Pick-Up, TA: Postal Tax, DD: Preparation of Cargo manifest, FD: Priority, DJ: Proof of delivery (documentation), SE: Proof of delivery (pickup and delivery), LF: Quarantine, RD: Radio-active room, UF: Recontouring, RC: Referral of Charge, RB: Rejection, DK: Release order, RF: Remit Following Collection Fee, CJ: Removal (carrier warehouse to warehouse), LJ: Rental of Stalls/pens, ZA: Re-warehousing, TB: Sales Tax, VB: Security (armed guard/escort) handling, SC: Security Charge, XB: Security (Surcharge/premiums), SP: Separate Early Release, SS: Signature Service, TC: Stamp Tax, ST: State Sales Tax, TD: State Tax, TE: Statistical Tax, SI: Stop in Transit, SR: Storage — Destination, LH: Storage (Live animals), SO: Storage — Origin, VC: Strongroom, SD: Surface Charge — Destination, SU: Surface Charge — Origin, XC: Time, TR: Transit, UG: Unloading (Unit Load Device), TV: Value Added Tax (General or for Export), TI: Value Added Tax (For Import only), IA: Very important cargo (VIC), DV: Veterinary and/or Phytosanitary purposes, LG: Veterinary inspection, XD: War risk, FI: Weighing, XE: Weight, BM: Withdrawal of shipment after clearance"},"Amount":{"type":"number","maxLength":12},"ChargeIdentifier":{"type":"string"},"PrepaidCollect":{"type":"string"}}}}
+{"type":"object","properties":{"Description":{"type":"string","maxLength":2,"minLength":2,"enum":["UC","UL","BA","FA","BB","DG","AW","DH","AW","BC","AW","AW","DI","AW","AC","AS","AT","BR","BL","CA","DC","FC","LC","LI","CD","CH","JA","BE","CB","PB","ZC","BF","RA","SA","SB","SF","UD","GA","UB","DB","DF","FB","CG","CE","MY","FE","ZB","TX","GT","EA","KA","PA","UH","VA","WA","LE","HR","BI","CF","IN","UE","FF","KB","LA","CC","BH","MA","MC","MO","MX","MZ","MD","MN","MB","HB","NS","CI","PK","PU","TA","DD","FD","DJ","SE","LF","RD","UF","RC","RB","DK","RF","CJ","LJ","ZA","TB","VB","SC","XB","SP","SS","TC","ST","TD","TE","SI","SR","LH","SO","VC","SD","SU","XC","TR","UG","TV","TI","IA","VI","DV","LG","XD","FI","XE","BM"],"description":"UC: Adjusting of improperly loaded ULD, BA: Advances and/or guarantees, FA: Airport arrival, BB: Appraisal Service, DG: AWB Cancellation, DH: AWB Charges Correction Advice, BC: AWB Copy, AW: Air Waybill Fee, DI: AWB Re-waybilling, AC: Animal Container, AS: Assembly Service Fee, AT: Attendant, BR: Bank Release, BL: Blacklist Certificate, CA: Bonding, DC: Certificate of Origin, FC: Charges Collect Fee, LC: Cleaning, LI: Cleaning of stalls/pens, CD: Clearance and Handling — Destination, CH: Clearance and Handling — Origin, JA: Clearance, General, BE: Collection of funds, CB: Completion/preparation of documents, PB: Cool/Cold room, freezer (Perishables), ZC: Cool/Cold room, freezer (Storage), BF: Copies of documents, RA: Dangerous Goods Fee, SA: Delivery, SB: Delivery notification, SF: Delivery Order, UD: Demurrage, GA: Diplomatic consignment, UB: Disassembly, DB: Disbursement Fee, DF: Distribution Service Fee, FB: Domestic shipments, CG: Electronic processing or transmission customs purposes, CE: Export/Import warrant, MY: Fuel Surcharge — Due Issuing Carrier, FE: General (Handling), ZB: General (Storage), TX: General Taxes, GT: Government Tax, EA: Handling (Express), KA: Handling (Heavy/Bulky cargo), PA: Handling (Perishables), UH: Handling (Unit Load Device), VA: Handling (Valuable Cargo), WA: Handling (Vulnerable cargo), LE: Hotel, HR: Human Remains, BI: Import/export documents processing, CF: Inventory and/or inspection, IN: Insurance Premium, UE: Leasing, FF: Loading/unloading, KB: Loading/unloading equipment (forklift, LA: Live Animals, CC: Manual data entry for customs purposes, BH: Messenger service, MA: Miscellaneous — Due Agent (see Note, MC: Miscellaneous — Due Carrier (see Note, MO: to MX Miscellaneous — Due Issuing Carrier, MZ: Miscellaneous — Due Issuing Carrier, MD: to MN Miscellaneous — Due Last Carrier, MB: Miscellaneous — Unassigned (see Note, HB: Mortuary, NS: Navigation Surcharge — Due Issuing Carrier, CI: Overtime and Other Customs Imposed Charges, PK: Packing/Repacking, PU: Pick-Up, TA: Postal Tax, DD: Preparation of Cargo manifest, FD: Priority, DJ: Proof of delivery (documentation), SE: Proof of delivery (pickup and delivery), LF: Quarantine, RD: Radio-active room, UF: Recontouring, RC: Referral of Charge, RB: Rejection, DK: Release order, RF: Remit Following Collection Fee, CJ: Removal (carrier warehouse to warehouse), LJ: Rental of Stalls/pens, ZA: Re-warehousing, TB: Sales Tax, VB: Security (armed guard/escort) handling, SC: Security Charge, XB: Security (Surcharge/premiums), SP: Separate Early Release, SS: Signature Service, TC: Stamp Tax, ST: State Sales Tax, TD: State Tax, TE: Statistical Tax, SI: Stop in Transit, SR: Storage — Destination, LH: Storage (Live animals), SO: Storage — Origin, VC: Strongroom, SD: Surface Charge — Destination, SU: Surface Charge — Origin, XC: Time, TR: Transit, UG: Unloading (Unit Load Device), TV: Value Added Tax (General or for Export), TI: Value Added Tax (For Import only), IA: Very important cargo (VIC), DV: Veterinary and/or Phytosanitary purposes, LG: Veterinary inspection, XD: War risk, FI: Weighing, XE: Weight, BM: Withdrawal of shipment after clearance"},"Amount":{"type":"number","maxLength":12},"ChargeIdentifier":{"type":"string"},"PrepaidCollect":{"type":"string"}}}
+In PROP
+{"type":"number","maxLength":12}
+{"type":"string"}
+{"type":"string"}
+{"type":"object","properties":{"eCSD":{"type":"object"},"OtherCustoms":{"type":"array","items":{"type":"object"}}}}
+In PROP
+{"type":"object"}
+{"type":"array","items":{"type":"object"}}
+{"type":"object"}
+{"type":"array","items":{"type":"object","properties":{"TheID":{"type":"string"},"Name":{"type":"string"},"Email":{"type":"string","format":"email"}}}}
+{"type":"object","properties":{"TheID":{"type":"string"},"Name":{"type":"string"},"Email":{"type":"string","format":"email"}}}
+In PROP
+{"type":"string"}
+{"type":"string"}
+{"type":"string","format":"email"}
+{"type":"object","properties":{"Date":{"type":"string"},"Place":{"type":"string"},"ShipperSignature":{"type":"string"},"CarrierSignature":{"type":"string"}}}
+In PROP
+{"type":"string"}
+{"type":"string"}
+{"type":"string"}
+{"type":"string"}
+{"type":"array","items":{"type":"object","properties":{"AwbNumber":{"type":"string"},"HawbNumber":{"type":"string"},"HawbStatus":{"type":"string","enum":["D","S","A","R","F"],"description":"Draft, Sent, Accepted, Rejected, Finalized"},"NumberOfPieces":{"type":"integer"},"GrossWeight":{"$ref":"#/definitions/GrossWeight"},"Locations":{"type":"object","properties":{"PortOfOrigin":{"type":"object","properties":{"Code":{"type":"string"}}},"PortOfDestination":{"type":"object","properties":{"Code":{"type":"string"}}}}},"Commodity":{"type":"string"},"Parties":{"type":"object","properties":{"Shipper":{"type":"object","$ref":"#/definitions/Party"},"Consignee":{"type":"object","$ref":"#/definitions/Party"}}},"Charges":{"type":"object","$ref":"#/definitions/Charges"},"Cargo":{"type":"object","properties":{"HSCode":{"type":"array","items":{"type":"object","properties":{"Code":{"type":"string"}}}},"SpecialHandling":{"$ref":"#/definitions/SpecialHandling"},"GoodsDescription":{"type":"string"}}}}}}
+{"type":"object","properties":{"AwbNumber":{"type":"string"},"HawbNumber":{"type":"string"},"HawbStatus":{"type":"string","enum":["D","S","A","R","F"],"description":"Draft, Sent, Accepted, Rejected, Finalized"},"NumberOfPieces":{"type":"integer"},"GrossWeight":{"$ref":"#/definitions/GrossWeight"},"Locations":{"type":"object","properties":{"PortOfOrigin":{"type":"object","properties":{"Code":{"type":"string"}}},"PortOfDestination":{"type":"object","properties":{"Code":{"type":"string"}}}}},"Commodity":{"type":"string"},"Parties":{"type":"object","properties":{"Shipper":{"type":"object","$ref":"#/definitions/Party"},"Consignee":{"type":"object","$ref":"#/definitions/Party"}}},"Charges":{"type":"object","$ref":"#/definitions/Charges"},"Cargo":{"type":"object","properties":{"HSCode":{"type":"array","items":{"type":"object","properties":{"Code":{"type":"string"}}}},"SpecialHandling":{"$ref":"#/definitions/SpecialHandling"},"GoodsDescription":{"type":"string"}}}}}
+In PROP
+{"type":"string"}
+{"type":"string"}
+{"type":"integer"}
+{"type":"object","properties":{"PortOfOrigin":{"type":"object","properties":{"Code":{"type":"string"}}},"PortOfDestination":{"type":"object","properties":{"Code":{"type":"string"}}}}}
+In PROP
+{"type":"object","properties":{"Code":{"type":"string"}}}
+In PROP
+{"type":"string"}
+{"type":"object","properties":{"Code":{"type":"string"}}}
+In PROP
+{"type":"string"}
+{"type":"string"}
+{"type":"object","properties":{"Shipper":{"type":"object","$ref":"#/definitions/Party"},"Consignee":{"type":"object","$ref":"#/definitions/Party"}}}
+In PROP
+{"type":"object","properties":{"HSCode":{"type":"array","items":{"type":"object","properties":{"Code":{"type":"string"}}}},"SpecialHandling":{"$ref":"#/definitions/SpecialHandling"},"GoodsDescription":{"type":"string"}}}
+In PROP
+{"type":"array","items":{"type":"object","properties":{"Code":{"type":"string"}}}}
+{"type":"object","properties":{"Code":{"type":"string"}}}
+In PROP
+{"type":"string"}
+{"type":"string"}
+{"type":"array","items":{"type":"object","properties":{"Code":{"$ref":"#/definitions/SpecialHandlingCodes"}}}}
+{"type":"object","properties":{"Code":{"$ref":"#/definitions/SpecialHandlingCodes"}}}
+In PROP
+{"type":"integer"}
+{"type":"string","maxLength":14}
+{"type":"string","maxLength":35,"description":"Should consist of the Party's name"}
+{"type":"string","maxLength":25,"description":"Should consist of Phone number"}
+{"type":"string","maxLength":25,"description":"Should consist of Fax number"}
+{"type":"string","maxLength":50,"description":"Should consist of the Party's email id. Should adhere to standard email format"}
+{"type":"object","description":"Party Address","required":["Line1"],"properties":{"Line1":{"type":"string","maxLength":70,"description":"WARNING: Address Line1 and Line2 MUST not exceed 70 characters combined."},"Line2":{"type":"string","maxLength":35,"description":"Should consist of Party Address line2"},"Place":{"type":"string","maxLength":17,"description":"Should consist of place or location Mandatory if city not present"},"City":{"type":"object","description":"Should consist of Party's City","properties":{"Code":{"type":"string","maxLength":5,"description":"Should consist of 5 digit UNLOC code for city"},"Name":{"type":"string","maxLength":50,"description":"Will be available in GET."}}},"PostalCode":{"type":"string","maxLength":9,"description":"Should consist of Party's Postal code"},"StateProvince":{"type":"string","maxLength":9,"description":"Should consist of State or Province"},"Country":{"type":"object","required":["Code"],"description":"Should consist of Party's Country","properties":{"Code":{"type":"string","maxLength":2,"description":"Should consist of standard 2 digit country code as per ISO 3166"},"Name":{"type":"string","maxLength":50,"description":"Will be available in GET."}}}}}
+In PROP
+{"type":"string","maxLength":70,"description":"WARNING: Address Line1 and Line2 MUST not exceed 70 characters combined."}
+{"type":"string","maxLength":35,"description":"Should consist of Party Address line2"}
+{"type":"string","maxLength":17,"description":"Should consist of place or location Mandatory if city not present"}
+{"type":"object","description":"Should consist of Party's City","properties":{"Code":{"type":"string","maxLength":5,"description":"Should consist of 5 digit UNLOC code for city"},"Name":{"type":"string","maxLength":50,"description":"Will be available in GET."}}}
+In PROP
+{"type":"string","maxLength":5,"description":"Should consist of 5 digit UNLOC code for city"}
+{"type":"string","maxLength":50,"description":"Will be available in GET."}
+{"type":"string","maxLength":9,"description":"Should consist of Party's Postal code"}
+{"type":"string","maxLength":9,"description":"Should consist of State or Province"}
+{"type":"object","required":["Code"],"description":"Should consist of Party's Country","properties":{"Code":{"type":"string","maxLength":2,"description":"Should consist of standard 2 digit country code as per ISO 3166"},"Name":{"type":"string","maxLength":50,"description":"Will be available in GET."}}}
+In PROP
+{"type":"string","maxLength":2,"description":"Should consist of standard 2 digit country code as per ISO 3166"}
+{"type":"string","maxLength":50,"description":"Will be available in GET."}
+{"type":"string"}
+{"type":"string"}
+{"type":"string"}
+{"type":"string"}
+{"type":"string"}
+{"type":"string"}
+{"type":"string"}
+{"type":"integer"}
+{"type":"number"}
+<?xml version="1.0" encoding="UTF-8"?><schema xmlns:awbpouch="http://winwebconnect.com/schemas/v1/awbpouch-1.0.xsd" elementFormDefault="qualified" targetNamespace="http://winwebconnect.com/schemas/v1/awbpouch-1.0.xsd" xmlns="http://www.w3.org/2001/XMLSchema">
+  <complexType name="AWBPouch">
+    <sequence>
+      <element minOccurs="0" name="Mawb">
+        <complexType>
+          <sequence>
+            <element minOccurs="0" name="AwbStatus">
+              <simpleType>
+                <restriction base="string">
+                  <enumeration value="D"/>
+                  <enumeration value="S"/>
+                  <enumeration value="A"/>
+                  <enumeration value="R"/>
+                  <enumeration value="Z"/>
+                </restriction>
+              </simpleType>
+            </element>
+            <element minOccurs="0" name="AwbNumber" type="string"/>
+            <element minOccurs="0" name="EAwb" type="boolean"/>
+            <element minOccurs="0" name="WithPaper" type="boolean"/>
+            <element minOccurs="0" name="Parties">
+              <complexType>
+                <sequence>
+                  <element minOccurs="0" name="Shipper" type="awbpouch:Party"/>
+                  <element minOccurs="0" name="Consignee"/>
+                  <element minOccurs="0" name="Notify"/>
+                  <element minOccurs="0" name="Agent">
+                    <complexType>
+                      <sequence>
+                        <element minOccurs="0" name="WinID" type="int"/>
+                        <element minOccurs="0" name="AccountNumber" type="string"/>
+                      </sequence>
+                    </complexType>
+                  </element>
+                  <element minOccurs="0" name="CoLoader" type="string"/>
+                </sequence>
+              </complexType>
+            </element>
+            <element minOccurs="0" name="Accounting">
+              <complexType>
+                <sequence>
+                  <element maxOccurs="unbounded" minOccurs="0">
+                    <complexType>
+                      <sequence>
+                        <element minOccurs="0" name="Identifier">
+                          <simpleType>
+                            <restriction base="string">
+                              <enumeration value="CRN"/>
+                              <enumeration value="CRD"/>
+                              <enumeration value="CRI"/>
+                              <enumeration value="GEN"/>
+                              <enumeration value="GBL"/>
+                              <enumeration value="MCO"/>
+                              <enumeration value="STL"/>
+                              <enumeration value="RET"/>
+                              <enumeration value="SRN"/>
+                            </restriction>
+                          </simpleType>
+                        </element>
+                        <element minOccurs="0" name="Information">
+                          <simpleType>
+                            <restriction base="string">
+                              <maxLength value="34"/>
+                            </restriction>
+                          </simpleType>
+                        </element>
+                      </sequence>
+                    </complexType>
+                  </element>
+                </sequence>
+              </complexType>
+            </element>
+            <element minOccurs="0" name="ShipmentReference">
+              <complexType>
+                <sequence>
+                  <element minOccurs="0" name="ReferenceNumber" type="string"/>
+                  <element minOccurs="0" name="AdditionalInformation" type="string"/>
+                </sequence>
+              </complexType>
+            </element>
+            <element minOccurs="0" name="RoutingDetails">
+              <complexType>
+                <sequence>
+                  <element maxOccurs="unbounded" minOccurs="0">
+                    <complexType>
+                      <sequence>
+                        <element minOccurs="0" name="FromAirportCode" type="string"/>
+                        <element minOccurs="0" name="ToAirportCode" type="string"/>
+                        <element minOccurs="0" name="CarrierCode" type="string"/>
+                        <element minOccurs="0" name="FlightNumber" type="string"/>
+                        <element minOccurs="0" name="FlightDate" type="string"/>
+                      </sequence>
+                    </complexType>
+                  </element>
+                </sequence>
+              </complexType>
+            </element>
+            <element minOccurs="0" name="ChargesDeclaration">
+              <complexType>
+                <sequence>
+                  <element minOccurs="0" name="CurrencyCode" type="string"/>
+                  <element minOccurs="0" name="WeightOrValuation" type="string"/>
+                  <element minOccurs="0" name="Other" type="string"/>
+                  <element minOccurs="0" name="ValuesForCarriage" type="string"/>
+                  <element minOccurs="0" name="ValuesForCustom" type="string"/>
+                  <element minOccurs="0" name="ValuesForInsurance" type="string"/>
+                  <element minOccurs="0" name="ChargeCode">
+                    <simpleType>
+                      <restriction base="string">
+                        <enumeration value="CC"/>
+                        <enumeration value="CZ"/>
+                        <enumeration value="CG"/>
+                        <enumeration value="PP"/>
+                        <enumeration value="PX"/>
+                        <enumeration value="PZ"/>
+                        <enumeration value="PG"/>
+                        <enumeration value="CP"/>
+                        <enumeration value="CX"/>
+                        <enumeration value="CM"/>
+                        <enumeration value="NC"/>
+                        <enumeration value="NT"/>
+                        <enumeration value="NZ"/>
+                        <enumeration value="NG"/>
+                        <enumeration value="NP"/>
+                        <enumeration value="NX"/>
+                        <enumeration value="CA"/>
+                        <enumeration value="CB"/>
+                        <enumeration value="CE"/>
+                        <enumeration value="CH"/>
+                        <enumeration value="PC"/>
+                        <enumeration value="PD"/>
+                        <enumeration value="PE"/>
+                        <enumeration value="PH"/>
+                        <enumeration value="PF"/>
+                      </restriction>
+                    </simpleType>
+                  </element>
+                </sequence>
+              </complexType>
+            </element>
+            <element minOccurs="0" name="Handling">
+              <complexType>
+                <sequence>
+                  <element minOccurs="0" name="SpecialServiceInformation" type="string"/>
+                  <element minOccurs="0" name="OtherServiceInformation" type="string"/>
+                  <element minOccurs="0" name="SCI" type="string"/>
+                  <element minOccurs="0" name="SpecialHandling">
+                    <complexType>
+                      <sequence>
+                        <element maxOccurs="unbounded" minOccurs="0" name="SpecialHandlingItems" type="awbpouch:SpecialHandlingItems"/>
+                      </sequence>
+                    </complexType>
+                  </element>
+                  <element minOccurs="0" name="PrintHandlingDetails" type="string"/>
+                </sequence>
+              </complexType>
+            </element>
+            <element minOccurs="0" name="Rates">
+              <complexType>
+                <sequence>
+                  <element maxOccurs="unbounded" minOccurs="0">
+                    <complexType>
+                      <sequence>
+                        <element minOccurs="0" name="NumberOfPieces" type="int"/>
+                        <element minOccurs="0" name="GrossWeight" type="awbpouch:GrossWeight"/>
+                        <element minOccurs="0" name="Volume" type="awbpouch:Volume"/>
+                        <element minOccurs="0" name="SLAC" type="string"/>
+                        <element minOccurs="0" name="RateClassCode" type="awbpouch:RateClassCodes"/>
+                        <element minOccurs="0" name="CommodityItemNumber" type="string"/>
+                        <element minOccurs="0" name="ChargeableWeight" type="int"/>
+                        <element minOccurs="0" name="RateOrCharge" type="decimal"/>
+                        <element minOccurs="0" name="ChargeAmount" type="decimal"/>
+                        <element minOccurs="0" name="NatureAndQuantityOfGoods" type="string"/>
+                        <element minOccurs="0" name="PrintNatureAndQuantityOfGoods" type="string"/>
+                        <element minOccurs="0" name="Dimensions" type="string"/>
+                        <element minOccurs="0" name="Dims">
+                          <complexType>
+                            <sequence>
+                              <element maxOccurs="unbounded" minOccurs="0">
+                                <complexType>
+                                  <sequence>
+                                    <element minOccurs="0" name="Pcs" type="int"/>
+                                    <element minOccurs="0" name="Length" type="int"/>
+                                    <element minOccurs="0" name="Width" type="int"/>
+                                    <element minOccurs="0" name="Height" type="int"/>
+                                    <element minOccurs="0" name="UOM" type="string"/>
+                                  </sequence>
+                                </complexType>
+                              </element>
+                            </sequence>
+                          </complexType>
+                        </element>
+                        <element minOccurs="0" name="ULD">
+                          <complexType>
+                            <sequence>
+                              <element maxOccurs="unbounded" minOccurs="0"/>
+                            </sequence>
+                          </complexType>
+                        </element>
+                      </sequence>
+                    </complexType>
+                  </element>
+                </sequence>
+              </complexType>
+            </element>
+            <element minOccurs="0" name="ChargesSummary">
+              <complexType>
+                <sequence>
+                  <element minOccurs="0" name="WeightCharge" type="decimal"/>
+                  <element minOccurs="0" name="ValuationCharge" type="string"/>
+                  <element minOccurs="0" name="Taxes" type="string"/>
+                </sequence>
+              </complexType>
+            </element>
+            <element minOccurs="0" name="OtherCharges">
+              <complexType>
+                <sequence>
+                  <element maxOccurs="unbounded" minOccurs="0">
+                    <complexType>
+                      <sequence>
+                        <element minOccurs="0" name="Description">
+                          <simpleType>
+                            <restriction base="string">
+                              <enumeration value="UC"/>
+                              <enumeration value="UL"/>
+                              <enumeration value="BA"/>
+                              <enumeration value="FA"/>
+                              <enumeration value="BB"/>
+                              <enumeration value="DG"/>
+                              <enumeration value="AW"/>
+                              <enumeration value="DH"/>
+                              <enumeration value="AW"/>
+                              <enumeration value="BC"/>
+                              <enumeration value="AW"/>
+                              <enumeration value="AW"/>
+                              <enumeration value="DI"/>
+                              <enumeration value="AW"/>
+                              <enumeration value="AC"/>
+                              <enumeration value="AS"/>
+                              <enumeration value="AT"/>
+                              <enumeration value="BR"/>
+                              <enumeration value="BL"/>
+                              <enumeration value="CA"/>
+                              <enumeration value="DC"/>
+                              <enumeration value="FC"/>
+                              <enumeration value="LC"/>
+                              <enumeration value="LI"/>
+                              <enumeration value="CD"/>
+                              <enumeration value="CH"/>
+                              <enumeration value="JA"/>
+                              <enumeration value="BE"/>
+                              <enumeration value="CB"/>
+                              <enumeration value="PB"/>
+                              <enumeration value="ZC"/>
+                              <enumeration value="BF"/>
+                              <enumeration value="RA"/>
+                              <enumeration value="SA"/>
+                              <enumeration value="SB"/>
+                              <enumeration value="SF"/>
+                              <enumeration value="UD"/>
+                              <enumeration value="GA"/>
+                              <enumeration value="UB"/>
+                              <enumeration value="DB"/>
+                              <enumeration value="DF"/>
+                              <enumeration value="FB"/>
+                              <enumeration value="CG"/>
+                              <enumeration value="CE"/>
+                              <enumeration value="MY"/>
+                              <enumeration value="FE"/>
+                              <enumeration value="ZB"/>
+                              <enumeration value="TX"/>
+                              <enumeration value="GT"/>
+                              <enumeration value="EA"/>
+                              <enumeration value="KA"/>
+                              <enumeration value="PA"/>
+                              <enumeration value="UH"/>
+                              <enumeration value="VA"/>
+                              <enumeration value="WA"/>
+                              <enumeration value="LE"/>
+                              <enumeration value="HR"/>
+                              <enumeration value="BI"/>
+                              <enumeration value="CF"/>
+                              <enumeration value="IN"/>
+                              <enumeration value="UE"/>
+                              <enumeration value="FF"/>
+                              <enumeration value="KB"/>
+                              <enumeration value="LA"/>
+                              <enumeration value="CC"/>
+                              <enumeration value="BH"/>
+                              <enumeration value="MA"/>
+                              <enumeration value="MC"/>
+                              <enumeration value="MO"/>
+                              <enumeration value="MX"/>
+                              <enumeration value="MZ"/>
+                              <enumeration value="MD"/>
+                              <enumeration value="MN"/>
+                              <enumeration value="MB"/>
+                              <enumeration value="HB"/>
+                              <enumeration value="NS"/>
+                              <enumeration value="CI"/>
+                              <enumeration value="PK"/>
+                              <enumeration value="PU"/>
+                              <enumeration value="TA"/>
+                              <enumeration value="DD"/>
+                              <enumeration value="FD"/>
+                              <enumeration value="DJ"/>
+                              <enumeration value="SE"/>
+                              <enumeration value="LF"/>
+                              <enumeration value="RD"/>
+                              <enumeration value="UF"/>
+                              <enumeration value="RC"/>
+                              <enumeration value="RB"/>
+                              <enumeration value="DK"/>
+                              <enumeration value="RF"/>
+                              <enumeration value="CJ"/>
+                              <enumeration value="LJ"/>
+                              <enumeration value="ZA"/>
+                              <enumeration value="TB"/>
+                              <enumeration value="VB"/>
+                              <enumeration value="SC"/>
+                              <enumeration value="XB"/>
+                              <enumeration value="SP"/>
+                              <enumeration value="SS"/>
+                              <enumeration value="TC"/>
+                              <enumeration value="ST"/>
+                              <enumeration value="TD"/>
+                              <enumeration value="TE"/>
+                              <enumeration value="SI"/>
+                              <enumeration value="SR"/>
+                              <enumeration value="LH"/>
+                              <enumeration value="SO"/>
+                              <enumeration value="VC"/>
+                              <enumeration value="SD"/>
+                              <enumeration value="SU"/>
+                              <enumeration value="XC"/>
+                              <enumeration value="TR"/>
+                              <enumeration value="UG"/>
+                              <enumeration value="TV"/>
+                              <enumeration value="TI"/>
+                              <enumeration value="IA"/>
+                              <enumeration value="VI"/>
+                              <enumeration value="DV"/>
+                              <enumeration value="LG"/>
+                              <enumeration value="XD"/>
+                              <enumeration value="FI"/>
+                              <enumeration value="XE"/>
+                              <enumeration value="BM"/>
+                            </restriction>
+                          </simpleType>
+                        </element>
+                        <element minOccurs="0" name="Amount" type="decimal"/>
+                        <element minOccurs="0" name="ChargeIdentifier" type="string"/>
+                        <element minOccurs="0" name="PrepaidCollect" type="string"/>
+                      </sequence>
+                    </complexType>
+                  </element>
+                </sequence>
+              </complexType>
+            </element>
+            <element minOccurs="0" name="Optional">
+              <complexType>
+                <sequence>
+                  <element minOccurs="0" name="ECSD"/>
+                  <element minOccurs="0" name="OtherCustoms">
+                    <complexType>
+                      <sequence>
+                        <element maxOccurs="unbounded" minOccurs="0"/>
+                      </sequence>
+                    </complexType>
+                  </element>
+                </sequence>
+              </complexType>
+            </element>
+            <element minOccurs="0" name="EmailNotifications">
+              <complexType>
+                <sequence>
+                  <element maxOccurs="unbounded" minOccurs="0">
+                    <complexType>
+                      <sequence>
+                        <element minOccurs="0" name="TheID" type="string"/>
+                        <element minOccurs="0" name="Name" type="string"/>
+                        <element minOccurs="0" name="Email" type="string"/>
+                      </sequence>
+                    </complexType>
+                  </element>
+                </sequence>
+              </complexType>
+            </element>
+            <element minOccurs="0" name="Execution">
+              <complexType>
+                <sequence>
+                  <element minOccurs="0" name="Date" type="string"/>
+                  <element minOccurs="0" name="Place" type="string"/>
+                  <element minOccurs="0" name="ShipperSignature" type="string"/>
+                  <element minOccurs="0" name="CarrierSignature" type="string"/>
+                </sequence>
+              </complexType>
+            </element>
+          </sequence>
+        </complexType>
+      </element>
+      <element minOccurs="0" name="Hawbs">
+        <complexType>
+          <sequence>
+            <element maxOccurs="unbounded" minOccurs="0">
+              <complexType>
+                <sequence>
+                  <element minOccurs="0" name="AwbNumber" type="string"/>
+                  <element minOccurs="0" name="HawbNumber" type="string"/>
+                  <element minOccurs="0" name="HawbStatus">
+                    <simpleType>
+                      <restriction base="string">
+                        <enumeration value="D"/>
+                        <enumeration value="S"/>
+                        <enumeration value="A"/>
+                        <enumeration value="R"/>
+                        <enumeration value="F"/>
+                      </restriction>
+                    </simpleType>
+                  </element>
+                  <element minOccurs="0" name="NumberOfPieces" type="int"/>
+                  <element minOccurs="0" name="GrossWeight" type="awbpouch:GrossWeight"/>
+                  <element minOccurs="0" name="Locations">
+                    <complexType>
+                      <sequence>
+                        <element minOccurs="0" name="PortOfOrigin">
+                          <complexType>
+                            <sequence>
+                              <element minOccurs="0" name="Code" type="string"/>
+                            </sequence>
+                          </complexType>
+                        </element>
+                        <element minOccurs="0" name="PortOfDestination">
+                          <complexType>
+                            <sequence>
+                              <element minOccurs="0" name="Code" type="string"/>
+                            </sequence>
+                          </complexType>
+                        </element>
+                      </sequence>
+                    </complexType>
+                  </element>
+                  <element minOccurs="0" name="Commodity" type="string"/>
+                  <element minOccurs="0" name="Parties">
+                    <complexType>
+                      <sequence>
+                        <element minOccurs="0" name="Shipper" type="awbpouch:Party"/>
+                        <element minOccurs="0" name="Consignee" type="awbpouch:Party"/>
+                      </sequence>
+                    </complexType>
+                  </element>
+                  <element minOccurs="0" name="Charges" type="awbpouch:Charges"/>
+                  <element minOccurs="0" name="Cargo">
+                    <complexType>
+                      <sequence>
+                        <element minOccurs="0" name="HSCode">
+                          <complexType>
+                            <sequence>
+                              <element maxOccurs="unbounded" minOccurs="0">
+                                <complexType>
+                                  <sequence>
+                                    <element minOccurs="0" name="Code" type="string"/>
+                                  </sequence>
+                                </complexType>
+                              </element>
+                            </sequence>
+                          </complexType>
+                        </element>
+                        <element minOccurs="0" name="SpecialHandling" type="awbpouch:SpecialHandling"/>
+                        <element minOccurs="0" name="GoodsDescription" type="string"/>
+                      </sequence>
+                    </complexType>
+                  </element>
+                </sequence>
+              </complexType>
+            </element>
+          </sequence>
+        </complexType>
+      </element>
+    </sequence>
+  </complexType>
+  <complexType name="RateClassCodes">
+    <sequence>
+      <element minOccurs="0" name="RateClassCodes">
+        <simpleType>
+          <restriction base="string">
+            <enumeration value="B"/>
+            <enumeration value="R"/>
+            <enumeration value="S"/>
+            <enumeration value="P"/>
+            <enumeration value="M"/>
+            <enumeration value="N"/>
+            <enumeration value="Q"/>
+            <enumeration value="K"/>
+            <enumeration value="C"/>
+            <enumeration value="X"/>
+            <enumeration value="E"/>
+            <enumeration value="U"/>
+            <enumeration value="Y"/>
+          </restriction>
+        </simpleType>
+      </element>
+    </sequence>
+  </complexType>
+  <complexType name="SpecialHandling">
+    <sequence>
+      <element minOccurs="0" name="SpecialHandling">
+        <complexType>
+          <sequence>
+            <element maxOccurs="unbounded" minOccurs="0">
+              <complexType>
+                <sequence>
+                  <element minOccurs="0" name="Code" type="awbpouch:SpecialHandlingCodes"/>
+                </sequence>
+              </complexType>
+            </element>
+          </sequence>
+        </complexType>
+      </element>
+    </sequence>
+  </complexType>
+  <complexType name="SpecialHandlingItems">
+    <sequence>
+      <element minOccurs="0" name="Code" type="awbpouch:SpecialHandlingCodes"/>
+    </sequence>
+  </complexType>
+  <complexType name="SpecialHandlingCodes">
+    <sequence>
+      <element minOccurs="0" name="SpecialHandlingCodes">
+        <simpleType>
+          <restriction base="string">
+            <enumeration value="CAO"/>
+            <enumeration value="ELI"/>
+            <enumeration value="ELM"/>
+            <enumeration value="RCM"/>
+            <enumeration value="RCL"/>
+            <enumeration value="RFW"/>
+            <enumeration value="ICE"/>
+            <enumeration value="REX"/>
+            <enumeration value="RCX"/>
+            <enumeration value="RGX"/>
+            <enumeration value="RLI"/>
+            <enumeration value="RLM"/>
+            <enumeration value="RXB"/>
+            <enumeration value="RXC"/>
+            <enumeration value="RXD"/>
+            <enumeration value="RXE"/>
+            <enumeration value="RXG"/>
+            <enumeration value="RXS"/>
+            <enumeration value="RFG"/>
+            <enumeration value="RFL"/>
+            <enumeration value="RFS"/>
+            <enumeration value="RIS"/>
+            <enumeration value="MAG"/>
+            <enumeration value="RMD"/>
+            <enumeration value="RNG"/>
+            <enumeration value="ROP"/>
+            <enumeration value="ROX"/>
+            <enumeration value="RPB"/>
+            <enumeration value="RPG"/>
+            <enumeration value="RSB"/>
+            <enumeration value="RRW"/>
+            <enumeration value="RRY"/>
+            <enumeration value="RSC"/>
+            <enumeration value="ACT"/>
+            <enumeration value="AOG"/>
+            <enumeration value="BUP"/>
+            <enumeration value="CAO"/>
+            <enumeration value="CAT"/>
+            <enumeration value="NSC"/>
+            <enumeration value="SHR"/>
+            <enumeration value="COM"/>
+            <enumeration value="ECC"/>
+            <enumeration value="COL"/>
+            <enumeration value="RDS"/>
+            <enumeration value="DIP"/>
+            <enumeration value="EAP"/>
+            <enumeration value="EAW"/>
+            <enumeration value="REQ"/>
+            <enumeration value="RRE"/>
+            <enumeration value="PES"/>
+            <enumeration value="PEF"/>
+            <enumeration value="EAT"/>
+            <enumeration value="FRI"/>
+            <enumeration value="FRO"/>
+            <enumeration value="PEP"/>
+            <enumeration value="ATT"/>
+            <enumeration value="GOG"/>
+            <enumeration value="HEG"/>
+            <enumeration value="HEA"/>
+            <enumeration value="HUM"/>
+            <enumeration value="PEA"/>
+            <enumeration value="SCO"/>
+            <enumeration value="SPF"/>
+            <enumeration value="SPX"/>
+            <enumeration value="LIC"/>
+            <enumeration value="AVI"/>
+            <enumeration value="LHO"/>
+            <enumeration value="MAL"/>
+            <enumeration value="PEM"/>
+            <enumeration value="MUW"/>
+            <enumeration value="NWP"/>
+            <enumeration value="OBX"/>
+            <enumeration value="BIG"/>
+            <enumeration value="OHG"/>
+            <enumeration value="PAC"/>
+            <enumeration value="PER"/>
+            <enumeration value="PIL"/>
+            <enumeration value="XPS"/>
+            <enumeration value="QRT"/>
+            <enumeration value="RAC"/>
+            <enumeration value="SHL"/>
+            <enumeration value="WET"/>
+            <enumeration value="SWP"/>
+            <enumeration value="SUR"/>
+            <enumeration value="FIL"/>
+            <enumeration value="VAL"/>
+            <enumeration value="VOL"/>
+            <enumeration value="VUN"/>
+          </restriction>
+        </simpleType>
+      </element>
+    </sequence>
+  </complexType>
+  <complexType name="VolumeUOM">
+    <sequence>
+      <element minOccurs="0" name="VolumeUOM">
+        <simpleType>
+          <restriction base="string">
+            <enumeration value="CC"/>
+            <enumeration value="CF"/>
+            <enumeration value="CI"/>
+            <enumeration value="MC"/>
+          </restriction>
+        </simpleType>
+      </element>
+    </sequence>
+  </complexType>
+  <complexType name="DimUOM">
+    <sequence>
+      <element minOccurs="0" name="DimUOM">
+        <simpleType>
+          <restriction base="string">
+            <enumeration value="CMT"/>
+            <enumeration value="INH"/>
+          </restriction>
+        </simpleType>
+      </element>
+    </sequence>
+  </complexType>
+  <complexType name="WeightUOM">
+    <sequence>
+      <element minOccurs="0" name="WeightUOM">
+        <simpleType>
+          <restriction base="string">
+            <enumeration value="K"/>
+            <enumeration value="L"/>
+          </restriction>
+        </simpleType>
+      </element>
+    </sequence>
+  </complexType>
+  <complexType name="Party">
+    <sequence>
+      <element minOccurs="0" name="WinId" type="int"/>
+      <element minOccurs="0" name="AccountNumber">
+        <simpleType>
+          <restriction base="string">
+            <maxLength value="14"/>
+          </restriction>
+        </simpleType>
+      </element>
+      <element minOccurs="0" name="Name">
+        <simpleType>
+          <restriction base="string">
+            <maxLength value="35"/>
+          </restriction>
+        </simpleType>
+      </element>
+      <element minOccurs="0" name="Phone">
+        <simpleType>
+          <restriction base="string">
+            <maxLength value="25"/>
+          </restriction>
+        </simpleType>
+      </element>
+      <element minOccurs="0" name="Fax">
+        <simpleType>
+          <restriction base="string">
+            <maxLength value="25"/>
+          </restriction>
+        </simpleType>
+      </element>
+      <element minOccurs="0" name="Email">
+        <simpleType>
+          <restriction base="string">
+            <maxLength value="50"/>
+          </restriction>
+        </simpleType>
+      </element>
+      <element minOccurs="0" name="Address">
+        <complexType>
+          <sequence>
+            <element minOccurs="0" name="Line1">
+              <simpleType>
+                <restriction base="string">
+                  <maxLength value="70"/>
+                </restriction>
+              </simpleType>
+            </element>
+            <element minOccurs="0" name="Line2">
+              <simpleType>
+                <restriction base="string">
+                  <maxLength value="35"/>
+                </restriction>
+              </simpleType>
+            </element>
+            <element minOccurs="0" name="Place">
+              <simpleType>
+                <restriction base="string">
+                  <maxLength value="17"/>
+                </restriction>
+              </simpleType>
+            </element>
+            <element minOccurs="0" name="City">
+              <complexType>
+                <sequence>
+                  <element minOccurs="0" name="Code">
+                    <simpleType>
+                      <restriction base="string">
+                        <maxLength value="5"/>
+                      </restriction>
+                    </simpleType>
+                  </element>
+                  <element minOccurs="0" name="Name">
+                    <simpleType>
+                      <restriction base="string">
+                        <maxLength value="50"/>
+                      </restriction>
+                    </simpleType>
+                  </element>
+                </sequence>
+              </complexType>
+            </element>
+            <element minOccurs="0" name="PostalCode">
+              <simpleType>
+                <restriction base="string">
+                  <maxLength value="9"/>
+                </restriction>
+              </simpleType>
+            </element>
+            <element minOccurs="0" name="StateProvince">
+              <simpleType>
+                <restriction base="string">
+                  <maxLength value="9"/>
+                </restriction>
+              </simpleType>
+            </element>
+            <element minOccurs="0" name="Country">
+              <complexType>
+                <sequence>
+                  <element minOccurs="0" name="Code">
+                    <simpleType>
+                      <restriction base="string">
+                        <maxLength value="2"/>
+                      </restriction>
+                    </simpleType>
+                  </element>
+                  <element minOccurs="0" name="Name">
+                    <simpleType>
+                      <restriction base="string">
+                        <maxLength value="50"/>
+                      </restriction>
+                    </simpleType>
+                  </element>
+                </sequence>
+              </complexType>
+            </element>
+          </sequence>
+        </complexType>
+      </element>
+      <element minOccurs="0" name="PrintPartyDetails" type="string"/>
+    </sequence>
+  </complexType>
+  <complexType name="Charges">
+    <sequence>
+      <element minOccurs="0" name="CurrencyCode" type="string"/>
+      <element minOccurs="0" name="WeightOrValuation" type="string"/>
+      <element minOccurs="0" name="Other" type="string"/>
+      <element minOccurs="0" name="ValuesForCarriage" type="string"/>
+      <element minOccurs="0" name="ValuesForCustom" type="string"/>
+      <element minOccurs="0" name="ValuesForInsurance" type="string"/>
+    </sequence>
+  </complexType>
+  <complexType name="GrossWeight">
+    <sequence>
+      <element minOccurs="0" name="Value" type="int"/>
+      <element minOccurs="0" name="UOM" type="awbpouch:WeightUOM"/>
+    </sequence>
+  </complexType>
+  <complexType name="Volume">
+    <sequence>
+      <element minOccurs="0" name="Value" type="decimal"/>
+      <element minOccurs="0" name="UOM" type="awbpouch:VolumeUOM"/>
+    </sequence>
+  </complexType>
+</schema>
+
+Tests run: 4, Failures: 0, Errors: 0, Skipped: 3, Time elapsed: 0.307 sec
+
+Results :
+
+Tests run: 4, Failures: 0, Errors: 0, Skipped: 3
+
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time: 1.166 s
+[INFO] Finished at: 2016-01-21T19:05:24+07:00
+[INFO] Final Memory: 8M/245M
+[INFO] ------------------------------------------------------------------------

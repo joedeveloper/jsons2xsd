@@ -1,386 +1,586 @@
 {
   "$schema": "http://json-schema.org/draft-04/schema#",
-  "id": "#/definitions/account",
-  "title": "account",
-  "type": "object",
-  "required": [],
-  "properties": {
-    "id": {"type": "string"},
-    "link": {"$ref": "#/definitions/Link"},
-    "accountNumber": {"type": "string"},
-    "name": {"type": "string"},
-    "type": {
+  "id": "/",
+  "definitions": {
+    "RateClassCodes": {
       "type": "string",
-      "description": "Individual, Joint, Other",
-      "enum": [
-        "Individual",
-        "Joint",
-        "Other"
-      ]
+      "enum": ["B", "R", "S", "P", "M", "N", "Q", "K", "C", "X", "E", "U", "Y"],
+      "description": "B: Basic Charge, R: Class Rate Reduction, S: Class Rate Surcharge, P: International Priority Service Rate, M: Minimum Charge, N: Normal Rate, Q: Quantity Rate, K: Rate per Kilogram, C: Specific Commodity Rate, X: Unit Load Device Additional Information, E: Unit Load Device Additional Rate, U: Unit Load Device Basic Charge or Rate, Y: Unit Load Device Discount"
     },
-    "pin": {"type": "integer"},
-    "status": {
+    "SpecialHandling": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "Code": {
+            "$ref": "#/definitions/SpecialHandlingCodes"
+          }
+        }
+      }
+    },
+    "SpecialHandlingItems": {
+      "type": "object",
+        "properties": {
+          "Code": {
+            "$ref": "#/definitions/SpecialHandlingCodes"
+          }
+        }
+      },
+    "SpecialHandlingCodes":{
       "type": "string",
-      "description": "Active, Suspended, Inactive, Closed",
-      "enum": [
-        "Active",
-        "Suspended",
-        "Inactive",
-        "Closed"
-      ]
+      "enum":["CAO","ELI","ELM","RCM","RCL","RFW","ICE","REX","RCX","RGX","RLI","RLM","RXB","RXC","RXD","RXE","RXG","RXS","RFG","RFL","RFS","RIS","MAG","RMD","RNG","ROP","ROX","RPB","RPG","RSB","RRW","RRY","RSC","ACT","AOG","BUP","CAO","CAT","NSC","SHR","COM","ECC","COL","RDS","DIP","EAP","EAW","REQ","RRE","PES","PEF","EAT","FRI","FRO","PEP","ATT","GOG","HEG","HEA","HUM","PEA","SCO","SPF","SPX","LIC","AVI","LHO","MAL","PEM","MUW","NWP","OBX","BIG","OHG","PAC","PER","PIL","XPS","QRT","RAC","SHL","WET","SWP","SUR","FIL","VAL","VOL","VUN"],
+      "description":"CAO:  Cargo Aircraft Only, ELI:  Lithium Ion Batteries otherwise excepted from the IATA DGR, ELM:  Lithium Metal Batteries otherwise excepted from the IATA DGR, RCM:  Corrosive, RCL:  Cryogenic Liquids, RFW:  Dangerous When Wet, ICE:  Dry Ice, REX:  To be reserved for normally forbidden Explosives, Divisions 1.1, 1.2, 1.3, 1.4F, 1.5 and 1.6, RCX:  Explosives 1.3C, RGX:  Explosives 1.3G, RLI:  Fully Regulated Lithium Ion Batteries (Class 9), RLM:  Fully Regulated Lithium Metal Batteries (Class 9), RXB:  Explosives 1.4B, RXC:  Explosives 1.4C, RXD:  Explosives 1.4D, RXE:  Explosives 1.4E, RXG:  Explosives 1.4G, RXS:  Explosives 1.4S, RFG:  Flammable Gas, RFL:  Flammable Liquid, RFS:  Flammable Solid, RIS:  Infectious Substance, MAG:  Magnetized Material, RMD:  Miscellaneous Dangerous Goods, RNG:  Non-Flammable Non-Toxic Gas, ROP:  Organic Peroxide, ROX:  Oxidizer, RPB:  Toxic Substance, RPG:  Toxic Gas, RSB:  Polymeric Beads, RRW:  Radioactive Material Category I-White, RRY:  Radioactive Material Categories II-Yellow and III -Yellow, RSC:  Spontaneously Combustible, ACT:  Active Temperature Controlled System, AOG:  Aircraft on Ground, BUP:  Bulk Unitization Programme, Shipper/Consignee Handled Unit, CAO:  Cargo Aircraft Only, CAT:  Cargo Attendant Accompanying Shipment, NSC:  Cargo Has Not Been Secured Yet for Passenger or All -Cargo Aircraft, SHR:  Secure for Passenger, All-Cargo and All-Mail Aircraft in Accordance with High Risk Requirements, COM:  Company Mail, ECC:  Consignment established with an electronically concluded cargo contract with no accompanying paper airwaybill, COL:  Cool Goods, RDS:  Diagnostic Specimens, DIP:  Diplomatic Mail, EAP:  e-freight Consignment with Accompanying PaperDocuments, EAW:  e-freight Consignment with No Accompanying Paper Documents, REQ:  Excepted Quantities of Dangerous Goods, RRE:  Excepted Quantities of Radioactive Material, PES:  Fish/Seafood, PEF:  Flowers, EAT:  Foodstuffs, FRI:  Frozen Goods Subject to Veterinary/Phytosanitary Inspections, FRO:  Frozen Goods, PEP:  Fruits and Vegetables, ATT:  Goods Attached to Air Waybill, GOG:  Hanging Garments, HEG:  Hatching Eggs, HEA:  Heavy Cargo/150 kilograms and over per piece, HUM:  Human Remains in Coffin, PEA:  Hunting trophies, skin, hide and all articles made from or containing parts of species listed in the CITES (Convention on International Trade in Endangered Species) appendices, SCO:  Cargo Secure forAll-Cargo Aircraft Only, SPF:  Laboratory Animals, SPX:  Cargo Secure for Passenger and All-Cargo Aircraft, LIC:  License Required, AVI:  Live Animal, LHO:  Living Human Organs/Blood, MAL:  Mail, PEM:  Meat, MUW:  Munitions of War, NWP:  Newspapers, Magazines, OBX:  Obnoxious Cargo, BIG:  Outsized, OHG:  Overhang Item, PAC:  Passenger and Cargo, PER:  Perishable Cargo, PIL:  Pharmaceuticals, XPS:  Priority Small Package, QRT:  Quick Ramp Transfer, RAC:  Reserved Air Cargo, SHL:  Save Human Life, WET:  Shipments of Wet Material not Packed in Watertight Containers, SWP:  Sporting Weapons, SUR:  Surface Transportation, FIL:  Undeveloped/Unexposed Film, VAL:  Valuable Cargo, VOL:  Volume, VUN:  Vulnerable Cargo"
     },
-    "financialStatus": {
+    "VolumeUOM": {
       "type": "string",
-      "description": "Current, Due ,InArrears, Delinquent",
-      "enum": [
-        "Current",
-        "Due",
-        "InArrears",
-        "Delinquent"
-      ]
+      "enum": ["CC","CF","CI","MC"],
+      "description": "Cubic Centimeters, Cubic Feet, Cubic Inches, Cubic Metres"
     },
-    "creditLimit": {"type": "integer"},
-    "customer": {"$ref": "#/definitions/CustomerSummary"},
-    "serviceAddress": {"$ref": "#/definitions/PropertyAddress"},
-    "primaryUser": {"$ref": "#/definitions/UserSummary"},
-    "users": {
-      "type": "array",
-      "items": {"$ref": "#/definitions/UserSummary"}
+    "DimUOM":{
+      "type": "string",
+      "enum": ["CMT", "INH"],
+      "description": "CMT: Centimeter, INH: Inch"
     },
-    "financials": {"$ref": "#/definitions/FinancialSummary"},
-    "billing": {"$ref": "#/definitions/BillingSummary"},
-    "payments": {"$ref": "#/definitions/PaymentSummary"},
-    "products": {
-      "type": "array",
-      "items": {"$ref": "#/definitions/ProductSummary"}
+    "WeightUOM":{
+      "type": "string",
+      "enum": ["K", "L"],
+      "description": "K: Kilo, L: Pound"
     },
-    "devices": {
-      "type": "array",
-      "items": {"$ref": "#/definitions/DeviceSummary"}
+    "Party": {
+      "type": "object",
+      "required":["Name","Address"],
+      "properties": {
+        "WinId": {
+          "type": "integer"
+        },
+        "AccountNumber": {
+          "type": "string",
+          "maxLength": 14
+        },
+        "Name": {
+          "type": "string",
+          "maxLength": 35,
+          "description": "Should consist of the Party's name"
+        },
+        "Phone": {
+          "type": "string",
+          "maxLength": 25,
+          "description": "Should consist of Phone number"
+        },
+        "Fax": {
+          "type": "string",
+          "maxLength": 25,
+          "description": "Should consist of Fax number"
+        },
+        "Email": {
+          "type": "string",
+          "maxLength": 50,
+          "description": "Should consist of the Party's email id. Should adhere to standard email format"
+        },
+        "Address": {
+          "type": "object",
+          "description": "Party Address",
+          "required":["Line1"],
+          "properties": {
+            "Line1": {
+              "type": "string",
+              "maxLength": 70,
+              "description": "WARNING: Address Line1 and Line2 MUST not exceed 70 characters combined."
+            },
+            "Line2": {
+              "type": "string",
+              "maxLength": 35,
+              "description": "Should consist of Party Address line2"
+            },
+            "Place": {
+              "type": "string",
+              "maxLength": 17,
+              "description": "Should consist of place or location Mandatory if city not present"
+
+            },
+            "City": {
+              "type": "object",
+              "description": "Should consist of Party's City",
+              "properties": {
+                "Code": {
+                  "type": "string",
+                  "maxLength": 5,
+                  "description": "Should consist of 5 digit UNLOC code for city"
+                },
+                "Name": {
+                  "type": "string",
+                  "maxLength": 50,
+                  "description": "Will be available in GET."
+                }
+              }
+            },
+            "PostalCode": {
+              "type": "string",
+              "maxLength": 9,
+              "description": "Should consist of Party's Postal code"
+            },
+            "StateProvince": {
+              "type": "string",
+              "maxLength": 9,
+              "description": "Should consist of State or Province"
+            },
+            "Country": {
+              "type": "object",
+              "required": ["Code"],
+              "description": "Should consist of Party's Country",
+              "properties": {
+                "Code": {
+                  "type": "string",
+                  "maxLength": 2,
+                  "description": "Should consist of standard 2 digit country code as per ISO 3166"
+                },
+                "Name": {
+                  "type": "string",
+                  "maxLength": 50,
+                  "description": "Will be available in GET."
+                }
+              }
+            }
+          }
+        },
+        "PrintPartyDetails": {
+          "type": "string"
+        }
+      }
     },
-    "taxExemptions": {"$ref": "#/definitions/TaxExemptions"},
-    "sites": {
-      "type": "array",
-      "items": {"$ref": "#/definitions/SiteSummary"}
+    "Charges": {
+      "type": "object",
+      "required": ["CurrencyCode", "WeightOrValuation", "Other"],
+      "properties": {
+        "CurrencyCode": {
+          "type": "string"
+        },
+        "WeightOrValuation": {
+          "type": "string"
+        },
+        "Other": {
+          "type": "string"
+        },
+        "ValuesForCarriage": {
+          "type": "string"
+        },
+        "ValuesForCustom": {
+          "type": "string"
+        },
+        "ValuesForInsurance": {
+          "type": "string"
+        }
+      }
     },
-    "preferences": {
-      "type": "array",
-      "items": {"$ref": "#/definitions/PreferenceSummary"}
+    "GrossWeight": {
+      "type": "object",
+      "properties": {
+        "Value": {
+          "type": "integer"
+        },
+        "UOM": {
+          "$ref": "#/definitions/WeightUOM"
+        }
+      }
     },
-    "relatedAccounts": {
-      "type": "array",
-      "items": {"$ref": "#/definitions/AccountSummary"}
+    "Volume": {
+      "type": "object",
+      "properties": {
+        "Value": {
+          "type": "number"
+        },
+        "UOM": {
+          "$ref": "#/definitions/VolumeUOM"
+        }
+      }
     }
   },
-  "definitions": {
-    "Link": {
+  "type": "object",
+  "properties": {
+    "Mawb": {
       "type": "object",
       "properties": {
-        "href": {
-          "type": "string"
-        },
-        "rel": {
-          "type": "string"
-        },
-        "title": {
-          "type": "string"
-        },
-        "method": {
-          "type": "string"
-        },
-        "type": {
-          "type": "string"
-        }
-      },
-      "additionalProperties": false,
-      "required": [
-        "href",
-        "rel"
-      ]
-    },
-    "CustomerSummary": {
-      "type": "object",
-      "properties": {
-        "id": {
-          "type": "string"
-        },
-        "link": {
-          "$ref": "#/definitions/Link"
-        },
-        "customerId": {
-          "type": "string"
-        },
-        "name": {
-          "type": "string"
-        },
-        "status": {
-          "type": "string"
-        },
-        "customerRank": {
-          "type": "string"
-        }
-      }
-    },
-    "PropertyAddress": {
-      "properties": {
-        "id": {"type": "string"},
-        "link": {"$ref": "#/definitions/Link"},
-        "formattedAddressLine1": {"type": "string"},
-        "formattedAddressLine2": {"type": "string"},
-        "locality": {"type": "string"},
-        "state_province": {"type": "string"},
-        "country": {"type": "string"},
-        "postalcode": {"type": "string"},
-        "postcodeExtension": {"type": "string"},
-        "property": {"$ref": "#/definitions/Property"}
-
-      },
-      "additionalProperties": false,
-      "required": [
-        "id",
-        "link"
-      ]
-    },
-    "UserSummary": {
-      "type": "object",
-      "properties": {
-        "id": {"type": "string"},
-        "link": {"$ref": "#/definitions/Link"},
-        "username": {"type": "string"},
-        "name": {"type": "string"},
-        "status": {"type": "string"},
-        "profile": {"$ref": "#/definitions/PartySummary"}
-      },
-      "additionalProperties": false,
-      "required": [
-        "id",
-        "link"
-      ]
-    },
-    "FinancialSummary": {
-      "type": "object",
-      "properties": {
-        "currentBalance": {
-          "type": "string"
-        },
-        "priorBilledAmount": {
-          "type": "string"
-        },
-        "currentPeriodPaymentsAdjustment": {
-          "type": "string"
-        },
-        "currentPeriodChargesCredits": {
-          "type": "string"
-        }
-      }
-    },
-    "BillingSummary": {
-      "type": "object",
-      "properties": {
-        "id": {
-          "type": "string"
-        },
-        "link": {
-          "$ref": "#/definitions/Link"
-        }
-      }
-    },
-    "PaymentSummary": {
-      "type": "object",
-      "properties": {
-        "id": {
-          "type": "string"
-        },
-        "link": {
-          "$ref": "#/definitions/Link"
-        }
-      }
-    },
-    "ProductSummary": {
-      "type": "object",
-      "properties": {
-        "id": {"type": "string"},
-        "link": {"$ref": "#/definitions/Link"},
-        "name": {"type": "string"},
-        "isBundle": {"type": "boolean"},
-        "description": {"type": "string"},
-        "productStatus": {"type": "string"},
-        "productSerialNumber": {"type": "string"}
-      },
-      "additionalProperties": false,
-      "required": [
-        "id",
-        "link",
-        "name",
-        "isBundle",
-        "description",
-        "productStatus",
-        "productSerialNumber"
-      ]
-    },
-    "DeviceSummary": {
-      "type": "object",
-      "properties": {
-        "id": {
-          "type": "string"
-        },
-        "link": {
-          "$ref": "#/definitions/Link"
-        },
-        "name": {
-          "type": "string"
-        },
-        "type": {
-          "type": "string"
-        },
-        "macAddress": {
-          "type": "string"
-        }
-      },
-      "additionalProperties": false,
-      "required": [
-        "id",
-        "link",
-        "name",
-        "type",
-        "macAddress"
-      ]
-    },
-    "TaxExemptions": {
-      "type": "object",
-      "properties": {
-        "id": {
-          "type": "string"
-        },
-        "link": {
-          "$ref": "#/definitions/Link"
-        }
-      }
-    },
-    "SiteSummary": {
-      "type": "object",
-      "properties": {
-        "id": {"type": "string"},
-        "link": {
-          "type": "object",
-          "$ref": "#/definitions/Link"
-        },
-        "name": {"type": "string"},
-        "multiTenant": {"type": "boolean"},
-        "clliCode": {"type": "string"},
-        "siteHours": {"type": "string"},
-        "status": {
+        "AwbStatus": {
           "type": "string",
-          "description": "Active, Off, Pending",
-          "enum": [
-            "Active",
-            "Off",
-            "Pending"
-          ]
-        }
-      },
-      "additionalProperties": false,
-      "required": [
-        "id",
-        "link",
-        "name",
-        "multiTenant",
-        "clliCode",
-        "siteHours",
-        "status"
-      ]
-    },
-    "PreferenceSummary": {
-      "type": "object",
-      "properties": {
-        "id": {"type": "string"},
-        "link": {"$ref": "#/definitions/Link"},
-        "preferenceName": {"type": "string"},
-        "value": {"type": "string"},
-        "unitOfMeasure": {"type": "string"},
-        "valueType": {"type": "string"},
-        "isSet": {"type": "boolean"},
-        "preferenceCategory": {"$ref": "#/definitions/PreferenceCategory"}
-      },
-      "additionalProperties": false,
-      "required": [
-        "id",
-        "link",
-        "preferenceName",
-        "value",
-        "unitOfMeasure",
-        "valueType",
-        "isSet",
-        "preferenceCategory"
-      ]
-    },
-    "PreferenceCategory": {
-      "type": "object",
-      "properties": {
-        "preferenceCategoryId": {"type": "string"},
-        "description": {"type": "string"},
-        "preferenceCategoryName": {"type": "string"}
+          "enum": ["D","S","A","R","Z"],
+          "description": "Draft, Sent, Accepted, Rejected, Shipment Accepted"
+        },
+        "AwbNumber": {
+          "type": "string"
+        },
+        "eAwb": {
+          "type": "boolean"
+        },
+        "WithPaper": {
+          "type": "boolean"
+        },
+        "Parties": {
+          "type": "object",
+          "properties": {
+            "Shipper": {
+              "type": "object",
+              "$ref": "#/definitions/Party"
+            },
+            "Consignee": {
+              "type": "object",
+              "ref": "#/definitions/Party"
+            },
+            "Notify": {
+              "type": "object",
+              "ref": "#/definitions/Party"
 
-      },
-      "additionalProperties": false,
-      "required": [
-        "preferenceCategoryName",
-        "description",
-        "preferenceCategoryId"
-      ]
-    },
-    "AccountSummary": {
-      "properties": {
-        "id": {"type": "string"},
-        "link": {"$ref": "#/definitions/Link"},
-        "name": {"type": "string"}
-      },
-      "additionalProperties": false,
-      "required": [
-        "id",
-        "link",
-        "name"
-      ]
-    },
-    "Property": {
-      "properties": {
-        "id": {"type": "string"},
-        "link": {"$ref": "#/definitions/Link"},
-
-        "lotNr": {"type": "string"},
-        "landUse": {"type": "string"},
-        "landCover": {"type": "string"},
-        "elevation": {"type": "string"},
-        "name": {"type": "string"},
-        "naturalRisks": {"type": "string"},
-        "geometry": {"$ref": "#/definitions/Geometry"},
-        "propertyAddresses": {
+            },
+            "Agent": {
+              "type": "object",
+              "properties": {
+                "WinID": {
+                  "type": "integer"
+                },
+                "AccountNumber": {
+                  "type": "string"
+                }
+              }
+            },
+            "CoLoader": {
+              "type": "string"
+            }
+          }
+        },
+        "Accounting": {
           "type": "array",
-          "items": {"$ref": "#/definitions/PropertyAddress"}
+          "items": {
+            "type": "object",
+            "properties": {
+              "Identifier": {
+                "type": "string",
+                "enum":["CRN","CRD","CRI","GEN","GBL","MCO","STL","RET","SRN"],
+                "description":"CRN Credit Card Number, CRD: Credit Card Expiry Date, CRI: Credit Card Issuance Name (Name Shown on the Credit Card), GEN: General Information, GBL: Government Bill of Lading, MCO: Miscellaneous Charge Order, STL: Mode of Settlement, RET: Return to Origin, SRN: Shipper’s Reference Number"
+              },
+              "Information": {
+                "type": "string",
+                "maxLength": 34
+              }
+            }
+          }
+        },
+        "ShipmentReference": {
+          "type": "object",
+          "properties": {
+            "ReferenceNumber": {
+              "type": "string"
+            },
+            "AdditionalInformation": {
+              "type": "string"
+            }
+          }
+        },
+        "RoutingDetails": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "FromAirportCode": {
+                "type": "string"
+              },
+              "ToAirportCode": {
+                "type": "string"
+              },
+              "CarrierCode": {
+                "type": "string"
+              },
+              "FlightNumber": {
+                "type": "string"
+              },
+              "FlightDate": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "ChargesDeclaration": {
+          "type": "object",
+          "allOf": [
+            {"$ref": "#/definitions/Charges"},
+            {"required": ["CurrencyCode", "ChargeCode","WeightOrValuation","Other"]}
+            ],
+           "properties": {
+             "CurrencyCode":{"type": "string"},"WeightOrValuation":{"type": "string"},"Other":{"type": "string"},"ValuesForCarriage":{"type": "string"},"ValuesForCustom":{"type": "string"},"ValuesForInsurance":{"type": "string"},
+             "ChargeCode": {
+               "type": "string",
+               "enum":["CC","CZ","CG","PP","PX","PZ","PG","CP","CX","CM","NC","NT","NZ","NG","NP","NX","CA","CB","CE","CH","PC","PD","PE","PH","PF"],
+               "description":"CC:  All Charges Collect, CZ:  All Charges Collect by Credit Card, CG:  All Charges Collect by GBL, PP:  All Charges Prepaid Cash, PX:  All Charges Prepaid Credit, PZ:  All Charges Prepaid by Credit Card, PG:  All Charges Prepaid by GBL, CP:  Destination Collect Cash, CX:  Destination Collect Credit, CM:  Destination Collect by MCO, NC:  No Charge, NT:  No Weight Charge — Other Charges Collect, NZ:  No Weight Charge — Other Charges Prepaid by Credit Card, NG:  No Weight Charge — Other Charges Prepaid by GBL, NP:  No Weight Charge — Other Charges Prepaid Cash, NX:  No Weight Charge — Other Charges Prepaid Credit, CA:  Partial Collect Credit — Partial Prepaid Cash, CB:  Partial Collect Credit — Partial Prepaid Credit, CE:  Partial Collect Credit Card — Partial Prepaid Cash, CH:  Partial Collect Credit Card — Partial Prepaid Credit, PC:  Partial Prepaid Cash — Partial Collect Cash, PD:  Partial Prepaid Credit — Partial Collect Cash, PE:  Partial Prepaid Credit Card — Partial Collect Cash, PH:  Partial Prepaid Credit Card — Partial Collect Credit, PF:  Partial Prepaid Credit Card — Partial Collect Credit Card"
+             }
+           },
+          "additionalProperties": false
+        },
+        "Handling": {
+          "type": "object",
+          "properties": {
+            "SpecialServiceInformation": {
+              "type": "string"
+            },
+            "OtherServiceInformation": {
+              "type": "string"
+            },
+            "SCI": {
+              "type": "string"
+            },
+            "SpecialHandling": {
+              "type": "array",
+              "items": {"type": "object", "$ref": "#/definitions/SpecialHandlingItems"}
+            },
+            "PrintHandlingDetails": {
+              "type": "string"
+            }
+          }
+        },
+        "Rates": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "NumberOfPieces": {
+                "type": "integer"
+              },
+              "GrossWeight": {
+                "$ref":"#/definitions/GrossWeight"
+              },
+              "Volume": {
+                "$ref":"#/definitions/Volume"
+              },
+              "SLAC": {
+                "type": "string"
+              },
+              "RateClassCode": {
+                "type": "string",
+                "$ref": "#/definitions/RateClassCodes"
+              },
+              "CommodityItemNumber": {
+                "type": "string"
+              },
+              "ChargeableWeight": {
+                "type": "integer"
+              },
+              "RateOrCharge": {
+                "type": "number"
+              },
+              "ChargeAmount": {
+                "type": "number"
+              },
+              "NatureAndQuantityOfGoods": {
+                "type": "string"
+              },
+              "PrintNatureAndQuantityOfGoods": {
+                "type": "string"
+              },
+              "Dimensions": {
+                "type": "string"
+              },
+              "Dims": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "Pcs": {
+                      "type": "integer"
+                    },
+                    "Length": {
+                      "type": "integer"
+                    },
+                    "Width": {
+                      "type": "integer"
+                    },
+                    "Height": {
+                      "type": "integer"
+                    },
+                    "UOM": {
+                      "type": "string"
+                    }
+                  }
+                }
+              },
+              "ULD": {
+                "type": "array",
+                "items": {"type": "object"}
+              }
+            }
+          }
+        },
+        "ChargesSummary": {
+          "type": "object",
+          "properties": {
+            "WeightCharge": {
+              "type": "number"
+            },
+            "ValuationCharge": {
+              "type": "string"
+            },
+            "Taxes": {
+              "type": "string"
+            }
+          }
+        },
+        "OtherCharges": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "Description": {
+                "type": "string",
+                "maxLength": 2,
+                "minLength": 2,
+                "enum":["UC","UL","BA","FA","BB","DG","AW","DH","AW","BC","AW","AW","DI","AW","AC","AS","AT","BR","BL","CA","DC","FC","LC","LI","CD","CH","JA","BE","CB","PB","ZC","BF","RA","SA","SB","SF","UD","GA","UB","DB","DF","FB","CG","CE","MY","FE","ZB","TX","GT","EA","KA","PA","UH","VA","WA","LE","HR","BI","CF","IN","UE","FF","KB","LA","CC","BH","MA","MC","MO","MX","MZ","MD","MN","MB","HB","NS","CI","PK","PU","TA","DD","FD","DJ","SE","LF","RD","UF","RC","RB","DK","RF","CJ","LJ","ZA","TB","VB","SC","XB","SP","SS","TC","ST","TD","TE","SI","SR","LH","SO","VC","SD","SU","XC","TR","UG","TV","TI","IA","VI","DV","LG","XD","FI","XE","BM"],
+                "description":"UC: Adjusting of improperly loaded ULD, BA: Advances and/or guarantees, FA: Airport arrival, BB: Appraisal Service, DG: AWB Cancellation, DH: AWB Charges Correction Advice, BC: AWB Copy, AW: Air Waybill Fee, DI: AWB Re-waybilling, AC: Animal Container, AS: Assembly Service Fee, AT: Attendant, BR: Bank Release, BL: Blacklist Certificate, CA: Bonding, DC: Certificate of Origin, FC: Charges Collect Fee, LC: Cleaning, LI: Cleaning of stalls/pens, CD: Clearance and Handling — Destination, CH: Clearance and Handling — Origin, JA: Clearance, General, BE: Collection of funds, CB: Completion/preparation of documents, PB: Cool/Cold room, freezer (Perishables), ZC: Cool/Cold room, freezer (Storage), BF: Copies of documents, RA: Dangerous Goods Fee, SA: Delivery, SB: Delivery notification, SF: Delivery Order, UD: Demurrage, GA: Diplomatic consignment, UB: Disassembly, DB: Disbursement Fee, DF: Distribution Service Fee, FB: Domestic shipments, CG: Electronic processing or transmission customs purposes, CE: Export/Import warrant, MY: Fuel Surcharge — Due Issuing Carrier, FE: General (Handling), ZB: General (Storage), TX: General Taxes, GT: Government Tax, EA: Handling (Express), KA: Handling (Heavy/Bulky cargo), PA: Handling (Perishables), UH: Handling (Unit Load Device), VA: Handling (Valuable Cargo), WA: Handling (Vulnerable cargo), LE: Hotel, HR: Human Remains, BI: Import/export documents processing, CF: Inventory and/or inspection, IN: Insurance Premium, UE: Leasing, FF: Loading/unloading, KB: Loading/unloading equipment (forklift, LA: Live Animals, CC: Manual data entry for customs purposes, BH: Messenger service, MA: Miscellaneous — Due Agent (see Note, MC: Miscellaneous — Due Carrier (see Note, MO: to MX Miscellaneous — Due Issuing Carrier, MZ: Miscellaneous — Due Issuing Carrier, MD: to MN Miscellaneous — Due Last Carrier, MB: Miscellaneous — Unassigned (see Note, HB: Mortuary, NS: Navigation Surcharge — Due Issuing Carrier, CI: Overtime and Other Customs Imposed Charges, PK: Packing/Repacking, PU: Pick-Up, TA: Postal Tax, DD: Preparation of Cargo manifest, FD: Priority, DJ: Proof of delivery (documentation), SE: Proof of delivery (pickup and delivery), LF: Quarantine, RD: Radio-active room, UF: Recontouring, RC: Referral of Charge, RB: Rejection, DK: Release order, RF: Remit Following Collection Fee, CJ: Removal (carrier warehouse to warehouse), LJ: Rental of Stalls/pens, ZA: Re-warehousing, TB: Sales Tax, VB: Security (armed guard/escort) handling, SC: Security Charge, XB: Security (Surcharge/premiums), SP: Separate Early Release, SS: Signature Service, TC: Stamp Tax, ST: State Sales Tax, TD: State Tax, TE: Statistical Tax, SI: Stop in Transit, SR: Storage — Destination, LH: Storage (Live animals), SO: Storage — Origin, VC: Strongroom, SD: Surface Charge — Destination, SU: Surface Charge — Origin, XC: Time, TR: Transit, UG: Unloading (Unit Load Device), TV: Value Added Tax (General or for Export), TI: Value Added Tax (For Import only), IA: Very important cargo (VIC), DV: Veterinary and/or Phytosanitary purposes, LG: Veterinary inspection, XD: War risk, FI: Weighing, XE: Weight, BM: Withdrawal of shipment after clearance"
+              },
+              "Amount": {
+                "type": "number",
+                "maxLength": 12
+              },
+              "ChargeIdentifier": {
+                "type": "string"
+              },
+              "PrepaidCollect": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "Optional": {
+          "type": "object",
+          "properties": {
+            "eCSD": {
+              "type": "object"
+            },
+            "OtherCustoms": {
+              "type": "array",
+              "items": {"type": "object"}
+
+            }
+          }
+        },
+        "EmailNotifications": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "TheID": {
+                "type": "string"
+              },
+              "Name": {
+                "type": "string"
+              },
+              "Email": {
+                "type": "string",
+                "format": "email"
+              }
+            }
+          }
+        },
+        "Execution": {
+          "type": "object",
+          "properties": {
+            "Date": {
+              "type": "string"
+            },
+            "Place": {
+              "type": "string"
+            },
+            "ShipperSignature": {
+              "type": "string"
+            },
+            "CarrierSignature": {
+              "type": "string"
+            }
+          }
         }
-      },
-      "additionalProperties": false,
-      "required": [
-        "id"
-      ]
+      }
     },
-    "PartySummary": {
-      "type": "object",
-      "properties": {
-        "id": {"type": "string"},
-        "link": {"$ref": "#/definitions/Link"},
-        "name": {"type": "string"}
-      },
-      "additionalProperties": false,
-      "required": [
-        "id",
-        "link",
-        "name"
-      ]
-    },
-    "Geometry": {
-      "properties": {
-        "id": {"type": "string"}
+    "Hawbs": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "AwbNumber": {
+            "type": "string"
+          },
+          "HawbNumber": {
+            "type": "string"
+          },
+          "HawbStatus": {
+            "type": "string",
+            "enum": ["D","S","A","R","F"],
+            "description": "Draft, Sent, Accepted, Rejected, Finalized"
+          },
+          "NumberOfPieces": {
+            "type": "integer"
+          },
+          "GrossWeight": {
+            "$ref": "#/definitions/GrossWeight"
+          },
+          "Locations": {
+            "type": "object",
+            "properties": {
+              "PortOfOrigin": {
+                "type": "object",
+                "properties": {
+                  "Code": {
+                    "type": "string"
+                  }
+                }
+              },
+              "PortOfDestination": {
+                "type": "object",
+                "properties": {
+                  "Code": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          },
+          "Commodity": {
+            "type": "string"
+          },
+          "Parties": {
+            "type": "object",
+            "properties": {
+              "Shipper": {
+                "type": "object",
+                "$ref": "#/definitions/Party"
+              },
+              "Consignee": {
+                "type": "object",
+                "$ref": "#/definitions/Party"
+                }
+              }
+          },
+          "Charges": {
+            "type": "object",
+            "$ref": "#/definitions/Charges"
+          },
+          "Cargo": {
+            "type": "object",
+            "properties": {
+              "HSCode": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "Code": {
+                      "type": "string"
+                    }
+                  }
+                }
+              },
+              "SpecialHandling": {
+                "$ref": "#/definitions/SpecialHandling"
+              },
+              "GoodsDescription": {
+                "type": "string"
+              }
+            }
+          }
+        }
       }
     }
   }

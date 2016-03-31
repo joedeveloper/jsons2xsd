@@ -159,9 +159,14 @@ public class Jsons2Xsd {
 
                 final Element schemaSequence = createXsdElement(schemaComplexType, "sequence");
                 final JsonNode properties = val.get("properties");
-                Assert.notNull(properties, "\"properties\" property should be found in \"" + key + "\"");
 
-                doIterate(schemaSequence, properties);
+                //TODO: Should definition schemas always have properties? Can't they be arrays?
+                //Assert.notNull(properties, "\"properties\" property should be found in \"" + key + "\"");
+                if ( properties ==  null){
+                    doIterateSingle(key, val, schemaSequence);
+                } else {
+                    doIterate(schemaSequence, properties);
+                }
             }
 
         }
@@ -333,6 +338,7 @@ public class Jsons2Xsd {
 
 
         final JsonNode arrItems = jsonNode.path("items");
+        Assert.notNull(arrItems.path("type").textValue(), "item types must be specified on array '" + jsonNode);
 //		final String arrayXsdType = getType(arrItems.path("type").textValue(), arrItems.path("format").textValue());
         final String arrayXsdType = determineXsdType(arrItems.path("type").textValue(), arrItems);
         final boolean arrRequired = arrItems.path("required").booleanValue();
@@ -363,6 +369,7 @@ public class Jsons2Xsd {
     }
 
     private static String determineXsdType(String key, JsonNode node) {
+
         String jsonType = node.path("type").textValue();
         final String jsonFormat = node.path("format").textValue();
         final boolean isEnum = node.get("enum") != null;
@@ -372,9 +379,10 @@ public class Jsons2Xsd {
         } else if (isEnum) {
             return "enum";
         } else {
+            System.out.println(node);
             Assert.notNull(jsonType, "type must be specified on node '" + key + "': " + node);
             final String xsdType = getType(jsonType, jsonFormat);
-            Assert.notNull(xsdType, "Unable to determine XSD type for json type=" + jsonType + ", format=" + jsonFormat);
+            Assert.notNull(xsdType, "Unable to determine XSD type for json type=" + jsonType + ", format=" + jsonFormat + ", key=" +key);
             return xsdType;
         }
 
